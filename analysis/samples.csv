@@ -1,0 +1,76 @@
+sample_id,set,stratum,place,lon,lat,reference_label,reference_confidence,reference_notes
+C01,calibration,residential,Helensvale,153.3320,-27.9180,mixed,medium,House roof and garden tree share the cell
+C02,calibration,commercial,Robina,153.3880,-28.0790,artificial,high,Road and car park asphalt at Robina Town Centre
+C03,calibration,residential,Paradise Point,153.3930,-27.8840,artificial,medium,House roof and driveway dominate
+C04,calibration,residential,Burleigh Waters,153.4260,-28.0950,mixed,medium,"Roof, garden and tree canopy"
+C05,calibration,construction,Yatala,153.2270,-27.7430,bare_or_sand,medium,"Cleared land, bare soil with sparse dry grass (2022: scrub)"
+C06,calibration,industrial,West Burleigh,153.44007,-28.09812,artificial,high,Large shopping-centre roof with solar panels
+C07,calibration,industrial,Currumbin Waters,153.47389,-28.14964,artificial,high,Light-industrial metal roofs
+C08,calibration,industrial,Yatala,153.22901,-27.74187,artificial,high,Warehouse roof edge and paved yard
+C09,calibration,dense_vegetation,Springbrook,153.2700,-28.2150,vegetation,high,Rainforest canopy with small clearing nearby
+C10,calibration,dense_vegetation,Nerang National Park,153.3000,-27.9950,vegetation,high,Eucalypt forest canopy
+C11,calibration,dense_vegetation,Currumbin Valley,153.3850,-28.2000,vegetation,high,Forest canopy
+C12,calibration,dense_vegetation,Numinbah Valley,153.2350,-28.1700,vegetation,high,Forest canopy
+C13,calibration,beach,Surfers Paradise beach,153.43145,-28.00006,bare_or_sand,high,Dry upper-beach sand
+C14,calibration,beach,Main Beach,153.42951,-27.97607,bare_or_sand,high,Dry upper-beach sand
+C15,calibration,beach,South Stradbroke Island beach,153.43202,-27.83006,bare_or_sand,high,Dry beach sand
+C16,calibration,residential,Rainbow Bay,153.54884,-28.16564,mixed,medium,"Street, roofs and trees (computed beach point landed inland)"
+C17,calibration,residential,Pimpama,153.3000,-27.8150,artificial,medium,New estate (built before 2022): roof and road
+C18,calibration,commercial,Coomera,153.3150,-27.8650,artificial,high,Theme park roofs
+C19,calibration,dense_vegetation,Ormeau Hills,153.2400,-27.7900,vegetation,medium,Forest beside a narrow track
+C20,calibration,dense_vegetation,Upper Coomera,153.2750,-27.8800,vegetation,high,Forest canopy
+C21,calibration,water,Hinze Dam,153.28155,-28.05069,water,high,Hinze Dam reservoir beside the intake tower
+C22,calibration,water,Broadwater,153.4150,-27.9400,water,medium,Broadwater channel in 2025; sandbar in the 2022 aerial
+C23,calibration,water,Nerang River,153.41666,-27.99258,water,high,Nerang River channel
+C24,calibration,mixed_coastal,Coombabah Lake,153.3700,-27.8950,mixed,medium,"Intertidal flat: water in 2025 image, exposed sand ripples in 2022"
+C25,calibration,mixed_coastal,Coombabah wetlands,153.3850,-27.8900,mixed,medium,Edge of bushland and houses
+C26,calibration,beach,Southport Spit,153.42724,-27.94000,bare_or_sand,high,Cleared bare sand area on the Spit (sparse dune vegetation in 2022)
+C27,calibration,mixed_coastal,Jacobs Well,153.3700,-27.7900,mixed,medium,"Waterfront roof, jetty and canal water"
+C28,calibration,commercial,Currumbin estuary,153.4830,-28.1320,artificial,high,Resort roof
+C29,calibration,residential,Pimpama,153.31363,-27.81393,artificial,high,Dense new housing: roofs and roads
+C30,calibration,construction,Coomera,153.30906,-27.84969,bare_or_sand,high,"Active earthworks, exposed soil and rock"
+C31,calibration,residential,Ormeau,153.25364,-27.77740,artificial,high,Dense manufactured-home estate roofs
+C32,calibration,construction,Upper Coomera,153.27702,-27.87052,mixed,medium,New estate road beside bare cleared lots
+A01,assessment,residential,Varsity Lakes,153.4100,-28.0850,mixed,medium,"Road, verge grass and street trees"
+A02,assessment,residential,Pacific Pines,153.3200,-27.9400,mixed,medium,School car park asphalt and lawn
+A03,assessment,residential,Ashmore,153.3750,-27.9870,mixed,medium,Roof and tree canopy
+A04,assessment,residential,Mudgeeraba,153.3600,-28.0800,vegetation,medium,Tree canopy over a house lot
+A05,assessment,mixed_coastal,Coombabah,153.3600,-27.9050,mixed,medium,Wetland pond edge: open water and aquatic vegetation
+A06,assessment,arundel,Arundel,153.3620,-27.9370,mixed,medium,"Arundel street: road, roof edge and tree"
+A07,assessment,arundel,Arundel,153.3550,-27.9420,mixed,medium,"Arundel street: road, roofs and gardens"
+A08,assessment,arundel,Arundel,153.3700,-27.9300,artificial,high,Arundel arterial road asphalt
+A09,assessment,arundel,Arundel,153.3680,-27.9460,mixed,medium,Arundel road edge with tall trees
+A10,assessment,arundel,Arundel,153.3580,-27.9330,vegetation,high,Arundel parkland grass and trees
+A11,assessment,arundel,Arundel,153.3740,-27.9400,artificial,high,Arundel industrial roof and concrete yard
+A12,assessment,residential,Molendinar,153.3670,-27.9720,artificial,medium,Molendinar house roofs
+A13,assessment,dense_vegetation,Nerang,153.3300,-27.9850,vegetation,high,Forest (intended industrial point missed)
+A14,assessment,dense_vegetation,Stapylton,153.2500,-27.7350,vegetation,high,Forest (intended industrial point missed)
+A15,assessment,water,Coomera marine precinct,153.3450,-27.8600,water,high,Coomera River open water
+A16,assessment,residential,Labrador,153.3980,-27.9530,artificial,medium,Labrador house roofs
+A17,assessment,dense_vegetation,Springbrook south,153.2900,-28.2400,vegetation,high,Rainforest canopy (Esri image 2023-05-02)
+A18,assessment,dense_vegetation,Austinville,153.3100,-28.1700,vegetation,high,Forest canopy
+A19,assessment,dense_vegetation,Tallebudgera Valley,153.3500,-28.1600,vegetation,high,Forest canopy
+A20,assessment,dense_vegetation,Coomera River forest,153.2500,-27.8800,vegetation,medium,Regrowth and forest beside a track
+A21,assessment,dense_vegetation,Nerang State Forest,153.2700,-27.9800,vegetation,medium,Open forest and grass
+A22,assessment,beach,Burleigh Beach,153.45319,-28.08799,bare_or_sand,high,Dry upper-beach sand
+A23,assessment,beach,Palm Beach,153.47071,-28.11493,bare_or_sand,high,Dry upper-beach sand
+A24,assessment,beach,Mermaid Beach,153.43901,-28.04504,bare_or_sand,high,Dry upper-beach sand
+A25,assessment,beach,The Spit ocean beach,153.42682,-27.92007,bare_or_sand,medium,Open dune sand beside scattered shrubs
+A26,assessment,beach,South Stradbroke south,153.42657,-27.88008,bare_or_sand,high,Dry upper-beach sand
+A27,assessment,grassland,Pimpama north,153.3100,-27.7950,vegetation,high,Pasture grass (intended construction point missed)
+A28,assessment,residential,Coomera west,153.3000,-27.8700,artificial,medium,Arterial road and verge
+A29,assessment,dense_vegetation,Gaven,153.3300,-27.9500,vegetation,high,Forest (intended construction point missed)
+A30,assessment,bare_human_made,Luscombe,153.2100,-27.7900,bare_or_sand,medium,"Quarry benches: bare rock and gravel, excavated but not built"
+A31,assessment,dense_vegetation,Ormeau east,153.2700,-27.7700,vegetation,high,Forest (intended construction point missed)
+A32,assessment,dense_vegetation,Little Nerang Dam,153.2830,-28.1630,vegetation,high,Forest canopy (intended water point missed)
+A33,assessment,water,Broadwater south,153.4200,-27.9600,water,high,Broadwater open water
+A34,assessment,dense_vegetation,Hinze Dam north,153.2750,-28.0300,vegetation,high,Forest canopy (intended water point missed)
+A35,assessment,construction,Coomera River,153.3600,-27.8550,bare_or_sand,medium,Fresh earthworks in 2025; golf course in the 2022 aerial
+A36,assessment,water,Burleigh Lake,153.4430,-28.0890,water,high,Burleigh Lake open water
+A37,assessment,water,Coomera River mangroves,153.3750,-27.8500,water,high,Coomera River open water
+A38,assessment,commercial,Currumbin Creek,153.4750,-28.1400,artificial,high,Pacific Motorway (M1) carriageway
+A39,assessment,residential,Tallebudgera Creek mouth,153.4600,-28.1050,artificial,medium,Dense house roofs
+A40,assessment,mixed_coastal,Broadwater sand flats,153.4200,-27.9250,mixed,medium,Dune scrub and bare sand patches
+A41,assessment,mixed_coastal,Stradbroke west shore,153.4100,-27.8100,mixed,low,Tidal shallows beside a sand bank
+A42,assessment,beach,South Stradbroke Island north,153.43868,-27.79004,bare_or_sand,medium,Foredune sand with sparse grass
+A43,assessment,beach,South Stradbroke Island central,153.42804,-27.86007,bare_or_sand,medium,Open dune sand behind the beach

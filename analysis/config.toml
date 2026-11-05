@@ -1,0 +1,115 @@
+[study_area]
+boundary = "public/data/gold-coast-boundary.geojson"
+boundary_crs = "EPSG:7844"
+
+[imagery]
+stac_api = "https://earth-search.aws.element84.com/v1"
+collection = "sentinel-2-c1-l2a"
+start = "2025-01-01T00:00:00Z"
+end = "2025-12-31T23:59:59.999Z"
+quality_asset = "scl"
+minimum_clear_fraction = 0.01
+parallel_acquisitions = 4
+
+[imagery.bands]
+green = "green"
+red = "red"
+nir = "nir08"
+swir1 = "swir16"
+
+[grid]
+crs = "EPSG:32756"
+resolution = 20
+
+[masks]
+clear_scene_classes = [4, 5, 6, 7]
+buffered_scene_classes = [3, 8, 9, 10]
+buffer_pixels = 2
+
+[indices]
+minimum_reflectance = 0.0
+maximum_reflectance = 1.0
+minimum_denominator = 0.001
+
+[indices.formulas]
+ndvi = ["nir", "red"]
+ndbi = ["swir1", "nir"]
+mndwi = ["green", "swir1"]
+
+[composite]
+method = "median of per-observation index values"
+minimum_valid_observations = 5
+block_rows = 64
+
+[classification]
+water_mndwi = 0.2
+water_margin = 0.1
+vegetation_ndvi = 0.6
+vegetation_margin = 0.05
+artificial_ndbi_minimum = -0.15
+bare_or_sand_ndbi_range = [0.0, 0.15]
+
+[classification.classes]
+no_data = 0
+vegetation = 1
+water = 2
+candidate_artificial = 3
+uncertain_other = 4
+insufficient_observations = 5
+
+[assessment]
+samples = "analysis/samples.csv"
+dea_level3_mosaic = "https://dea-public-data.s3.ap-southeast-2.amazonaws.com/derivative/ga_ls_landcover_class_cyear_3/2-0-0/continental_mosaics/{year}--P1Y/ga_ls_landcover_class_cyear_3_mosaic_{year}--P1Y_level3.tif"
+dea_years = [2010, 2025]
+reference_imagery = "https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer"
+earlier_reference_imagery = "https://spatial-img.information.qld.gov.au/arcgis/rest/services/Basemaps/LatestStateProgram_AllUsers/ImageServer"
+
+[web]
+output = "public/data/sentinel2-2025"
+min_zoom = 8
+max_zoom = 13
+tile_size = 256
+index_colour_steps = 100
+
+[[web.classes]]
+value = 1
+name = "Vegetation"
+color = "#4daf4a"
+
+[[web.classes]]
+value = 2
+name = "Water"
+color = "#377eb8"
+
+[[web.classes]]
+value = 3
+name = "Candidate artificial surface"
+color = "#e7298a"
+
+[[web.classes]]
+value = 4
+name = "Uncertain or other surface"
+color = "#ffd92f"
+
+[[web.classes]]
+value = 5
+name = "Insufficient observations"
+color = "#7f7f7f"
+
+[web.indices.ndvi]
+title = "NDVI"
+formula = "(NIR − Red) / (NIR + Red)"
+range = [-0.2, 0.9]
+stops = [[-0.2, "#8c510a"], [0.15, "#dfc27d"], [0.45, "#a6d96a"], [0.9, "#00441b"]]
+
+[web.indices.ndbi]
+title = "NDBI"
+formula = "(SWIR1 − NIR) / (SWIR1 + NIR)"
+range = [-0.6, 0.3]
+stops = [[-0.6, "#2c7bb6"], [-0.15, "#ffffbf"], [0.3, "#d7191c"]]
+
+[web.indices.mndwi]
+title = "MNDWI"
+formula = "(Green − SWIR1) / (Green + SWIR1)"
+range = [-0.8, 0.8]
+stops = [[-0.8, "#8c510a"], [0.0, "#f5f5f5"], [0.8, "#08519c"]]
