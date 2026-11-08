@@ -115,6 +115,6 @@ def reference_chips(config=None):
         "earlier_reference_imagery": earlier_service,
         "chip_half_width_m": chip_half_width_m,
         "samples": len(records),
-        "dates_file": "analysis/results/reference_imagery_dates.csv",
-        "note": "Chips are stored only in analysis/work/reference_chips for review and are not published.",
+        "dates_file": f"analysis/results/{config['year']}/reference_imagery_dates.csv",
+        "note": f"Chips are stored only in analysis/work/{config['year']}/reference_chips for review and are not published.",
     })

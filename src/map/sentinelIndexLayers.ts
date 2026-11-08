@@ -1,3 +1,11 @@
+import { publicDataTileUrl, publicDataUrl } from './publicData.ts'
+
+export const sentinelYears = [2020, 2025] as const
+
+export type SentinelYear = (typeof sentinelYears)[number]
+
+export const defaultSentinelYear: SentinelYear = 2025
+
 export const sentinelViews = ['classes', 'ndvi', 'ndbi', 'mndwi'] as const
 
 export type SentinelView = (typeof sentinelViews)[number]
@@ -51,6 +59,8 @@ export type SentinelIndexMetadata = {
   layers: SentinelLayer[]
 }
 
+export type SentinelMetadataByYear = Partial<Record<SentinelYear, SentinelIndexMetadata>>
+
 export const sentinelViewLabels: Record<SentinelView, string> = {
   classes: 'Classes',
   ndvi: 'NDVI',
@@ -58,17 +68,22 @@ export const sentinelViewLabels: Record<SentinelView, string> = {
   mndwi: 'MNDWI',
 }
 
-const sentinelDataUrl = `${import.meta.env.BASE_URL}data/sentinel2-2025/`
+function sentinelDataPath(year: SentinelYear) {
+  return `sentinel2-${year}/`
+}
 
-export async function loadSentinelIndexMetadata(signal: AbortSignal): Promise<SentinelIndexMetadata> {
-  const response = await fetch(`${sentinelDataUrl}layers.json`, { signal })
+export async function loadSentinelIndexMetadata(
+  year: SentinelYear,
+  signal: AbortSignal,
+): Promise<SentinelIndexMetadata> {
+  const response = await fetch(`${publicDataUrl}${sentinelDataPath(year)}layers.json`, { signal })
   if (!response.ok) {
-    throw new Error(`Sentinel-2 layer metadata request failed with HTTP ${response.status}`)
+    throw new Error(`Sentinel-2 ${year} layer metadata request failed with HTTP ${response.status}`)
   }
   const metadata = (await response.json()) as SentinelIndexMetadata
   const missingViews = sentinelViews.filter((view) => !metadata.layers.some((layer) => layer.id === view))
   if (missingViews.length > 0) {
-    throw new Error(`Sentinel-2 layer metadata is missing ${missingViews.join(', ')}`)
+    throw new Error(`Sentinel-2 ${year} layer metadata is missing ${missingViews.join(', ')}`)
   }
   return metadata
 }
@@ -81,11 +96,8 @@ export function findSentinelLayer(metadata: SentinelIndexMetadata, view: Sentine
   return layer
 }
 
-export function sentinelTileUrl(layer: SentinelLayer) {
-  return new URL(`${sentinelDataUrl}${layer.path}`, window.location.href).href
-    .replace('%7Bz%7D', '{z}')
-    .replace('%7Bx%7D', '{x}')
-    .replace('%7By%7D', '{y}')
+export function sentinelTileUrl(year: SentinelYear, layer: SentinelLayer) {
+  return publicDataTileUrl(`${sentinelDataPath(year)}${layer.path}`)
 }
 
 function escapeHtmlText(text: string) {

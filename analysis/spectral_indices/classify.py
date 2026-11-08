@@ -80,7 +80,7 @@ def classify(config=None):
         ],
         "pixel_counts": class_counts,
         "area_km2": {name: round(count * pixel_area_km2, 2) for name, count in class_counts.items()},
-        "output": "work/classification/index_rule_classes.tif",
+        "output": f"work/{config['year']}/classification/index_rule_classes.tif",
         "seconds": round(time.time() - started, 1),
     }
     update_manifest("classify", details)

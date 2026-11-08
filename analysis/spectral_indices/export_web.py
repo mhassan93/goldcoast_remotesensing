@@ -7,6 +7,7 @@ import numpy as np
 import rasterio
 from affine import Affine
 from PIL import Image
+from rasterio.features import rasterize
 from rasterio.warp import Resampling, reproject
 
 from .composite import index_names
@@ -73,53 +74,85 @@ def write_tiles(layer_directory, zoom, first_column, first_row, mosaic, palette)
     return sizes
 
 
-def export(config=None):
-    config = config or load_config()
-    started = time.time()
-    web = config["web"]
-    output_directory = (project_root / web["output"]).resolve()
+def tile_grid(bounds, zoom):
+    west, south, east, north = bounds
+    first_column, last_column = tile_column(west, zoom), tile_column(east, zoom)
+    first_row, last_row = tile_row(north, zoom), tile_row(south, zoom)
+    resolution = earth_circumference / (256 * 2 ** zoom)
+    transform = Affine(resolution, 0, -earth_circumference / 2 + first_column * 256 * resolution,
+                       0, -resolution, earth_circumference / 2 - first_row * 256 * resolution)
+    shape = ((last_row - first_row + 1) * 256, (last_column - first_column + 1) * 256)
+    return first_column, first_row, transform, shape
+
+
+def inside_tile_pixels(geometry, transform, shape):
+    burned = rasterize([(geometry, 1)], out_shape=shape, transform=transform, fill=0, all_touched=False, dtype="uint8")
+    return burned.astype(bool)
+
+
+def palette_indices(destination, layer):
+    if layer["categorical"]:
+        return np.where(destination == layer["nodata"], 0, destination).astype(np.uint8)
+    return quantise(destination, layer["range"], layer["steps"])
+
+
+def export_layer_tiles(layer, layer_directory, zooms, bounds, source_resolution, mercator_boundary=None):
+    centre_latitude = (bounds[1] + bounds[3]) / 2
+    sizes, resampling_by_zoom = [], {}
+    for zoom in range(zooms[0], zooms[1] + 1):
+        first_column, first_row, destination_transform, shape = tile_grid(bounds, zoom)
+        resampling, ground_resolution = resampling_for(zoom, centre_latitude, source_resolution, layer["categorical"])
+        is_enlarging = resampling in (Resampling.nearest, Resampling.bilinear)
+        source = layer["data"] if is_enlarging else layer.get("data_inside_boundary", layer["data"])
+        destination = np.full(shape, layer["nodata"], dtype=layer["data"].dtype)
+        reproject(source=source, destination=destination, src_transform=layer["transform"], src_crs=layer["crs"],
+                  src_nodata=layer["nodata"], dst_transform=destination_transform, dst_crs="EPSG:3857",
+                  dst_nodata=layer["nodata"], resampling=resampling)
+        indexed = palette_indices(destination, layer)
+        if mercator_boundary is not None:
+            indexed[~inside_tile_pixels(mercator_boundary, destination_transform, shape)] = 0
+        sizes += write_tiles(layer_directory, zoom, first_column, first_row, indexed, layer["palette"])
+        resampling_by_zoom[zoom] = {"method": resampling.name, "ground_metres_per_pixel": round(ground_resolution, 1)}
+    return {"tiles": len(sizes), "bytes": sum(sizes), "largest_tile_bytes": max(sizes),
+            "resampling_by_zoom": resampling_by_zoom}
+
+
+def prepare_output_directory(relative_output):
+    output_directory = (project_root / relative_output).resolve()
     public_data = (project_root / "public" / "data").resolve()
     if public_data not in output_directory.parents:
         raise ValueError(f"Refusing to write web output outside {public_data}")
     if output_directory.exists():
         shutil.rmtree(output_directory)
+    return output_directory
+
+
+def export(config=None):
+    config = config or load_config()
+    started = time.time()
+    web = config["web"]
+    output_directory = prepare_output_directory(web["output"])
     west, south, east, north = geometry_bounds(read_boundary_lonlat(config))
-    centre_latitude = (south + north) / 2
     with rasterio.open(work_path("classification", "index_rule_classes.tif")) as source:
         classes = source.read(1)
         source_transform, source_crs = source.transform, source.crs
     with rasterio.open(work_path("composite", "index_medians.tif")) as source:
         medians = source.read()
     steps = web["index_colour_steps"]
-    layers = {"classes": {"data": classes, "categorical": True, "nodata": 0,
+    grid_reference = {"transform": source_transform, "crs": source_crs}
+    layers = {"classes": {"data": classes, "categorical": True, "nodata": 0, **grid_reference,
                           "palette": palette_bytes({entry["value"]: hex_to_rgb(entry["color"]) for entry in web["classes"]})}}
     for position, name in enumerate(index_names):
         settings = web["indices"][name]
         colours = ramp_colours(settings["stops"], settings["range"], steps)
         layers[name] = {"data": medians[position], "categorical": False, "nodata": np.nan, "range": settings["range"],
+                        "steps": steps, **grid_reference,
                         "palette": palette_bytes({step + 1: colour for step, colour in enumerate(colours)})}
     report = {}
     for name, layer in layers.items():
-        sizes, resampling_by_zoom = [], {}
-        for zoom in range(web["min_zoom"], web["max_zoom"] + 1):
-            first_column, last_column = tile_column(west, zoom), tile_column(east, zoom)
-            first_row, last_row = tile_row(north, zoom), tile_row(south, zoom)
-            resolution = earth_circumference / (256 * 2 ** zoom)
-            destination_transform = Affine(resolution, 0, -earth_circumference / 2 + first_column * 256 * resolution,
-                                           0, -resolution, earth_circumference / 2 - first_row * 256 * resolution)
-            shape = ((last_row - first_row + 1) * 256, (last_column - first_column + 1) * 256)
-            resampling, ground_resolution = resampling_for(zoom, centre_latitude, config["grid"]["resolution"],
-                                                           layer["categorical"])
-            destination = np.full(shape, layer["nodata"], dtype=layer["data"].dtype)
-            reproject(source=layer["data"], destination=destination, src_transform=source_transform, src_crs=source_crs,
-                      src_nodata=layer["nodata"], dst_transform=destination_transform, dst_crs="EPSG:3857",
-                      dst_nodata=layer["nodata"], resampling=resampling)
-            indexed = destination.astype(np.uint8) if layer["categorical"] else quantise(destination, layer["range"], steps)
-            sizes += write_tiles(output_directory / name, zoom, first_column, first_row, indexed, layer["palette"])
-            resampling_by_zoom[zoom] = {"method": resampling.name, "ground_metres_per_pixel": round(ground_resolution, 1)}
-        report[name] = {"tiles": len(sizes), "bytes": sum(sizes), "largest_tile_bytes": max(sizes),
-                        "resampling_by_zoom": resampling_by_zoom}
-        print(f"{name}: {len(sizes)} tiles, {sum(sizes) / 1e6:.2f} MB", flush=True)
+        report[name] = export_layer_tiles(layer, output_directory / name, (web["min_zoom"], web["max_zoom"]),
+                                          (west, south, east, north), config["grid"]["resolution"])
+        print(f"{name}: {report[name]['tiles']} tiles, {report[name]['bytes'] / 1e6:.2f} MB", flush=True)
     manifest = read_manifest()
     acquisitions = manifest["composite"]["acquisition_ids"]
     stored_dates = sorted(entry["datetime"][:10] for entry in manifest["acquire"]["acquisitions"] if entry["stored"])
@@ -130,7 +163,7 @@ def export(config=None):
             "product": "Sentinel-2 Level-2A surface reflectance, Collection 1",
             "provider": "ESA Copernicus, distributed by Element 84 Earth Search on AWS",
             "stac_collection": f"{config['imagery']['stac_api']}/collections/{config['imagery']['collection']}",
-            "attribution": "Contains modified Copernicus Sentinel data 2025",
+            "attribution": f"Contains modified Copernicus Sentinel data {config['year']}",
             "processing_baseline": ", ".join(manifest["plan"]["processing_baselines"]),
         },
         "period": {"start": config["imagery"]["start"][:10], "end": config["imagery"]["end"][:10],

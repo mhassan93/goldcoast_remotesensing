@@ -9,9 +9,12 @@ import {
   findSentinelLayer,
   sentinelViewLabels,
   sentinelViews,
+  sentinelYears,
   type SentinelContinuousLayer,
   type SentinelIndexMetadata,
+  type SentinelMetadataByYear,
   type SentinelView,
+  type SentinelYear,
 } from '../map/sentinelIndexLayers.ts'
 
 export type AnalysisSource = 'dea' | 'sentinel'
@@ -20,6 +23,7 @@ export type AnalysisSelection = {
   isEnabled: boolean
   source: AnalysisSource
   deaYear: LandCoverYear
+  sentinelYear: SentinelYear
   sentinelView: SentinelView
 }
 
@@ -33,11 +37,12 @@ type AnalysisLayerPanelProps = {
   opacity: number
   isDisplaySmoothed: boolean
   status: AnalysisDisplayStatus
-  sentinelMetadata: SentinelIndexMetadata | null
+  sentinelMetadata: SentinelMetadataByYear
   sentinelMetadataStatus: SentinelMetadataStatus
   onToggle: () => void
   onSelectSource: (source: AnalysisSource) => void
   onSelectDeaYear: (year: LandCoverYear) => void
+  onSelectSentinelYear: (year: SentinelYear) => void
   onSelectSentinelView: (view: SentinelView) => void
   onChangeOpacity: (opacity: number) => void
   onToggleDisplaySmoothing: () => void
@@ -65,16 +70,24 @@ function formatDate(isoDate: string) {
   })
 }
 
+function formatAcquisitionPeriod(firstIsoDate: string, lastIsoDate: string) {
+  const first = formatDate(firstIsoDate)
+  const last = formatDate(lastIsoDate)
+  const sameYear = firstIsoDate.slice(0, 4) === lastIsoDate.slice(0, 4)
+  return `${sameYear ? first.replace(/ \d{4}$/, '') : first} – ${last}`
+}
+
 function formatIndexValue(value: number) {
   return value.toFixed(1).replace('-', '−')
 }
 
-function selectedLayerName(selection: AnalysisSelection, sentinelMetadata: SentinelIndexMetadata | null) {
+function selectedLayerName(selection: AnalysisSelection, sentinelMetadata: SentinelMetadataByYear) {
   if (selection.source === 'dea') {
     return `DEA land cover ${selection.deaYear}`
   }
-  const title = sentinelMetadata ? findSentinelLayer(sentinelMetadata, selection.sentinelView).title : 'Sentinel-2'
-  return `${title} 2025`
+  const metadata = sentinelMetadata[selection.sentinelYear]
+  const title = metadata ? findSentinelLayer(metadata, selection.sentinelView).title : 'Sentinel-2'
+  return `${title} ${selection.sentinelYear}`
 }
 
 function CategoricalLegend({ label, classes }: { label: string; classes: readonly LegendClass[] }) {
@@ -141,14 +154,22 @@ function DeaDetails() {
         . Each year summarises January to December Landsat observations at {deaLandCoverProduct.resolutionMetres} m.
       </p>
       <p className="analysis-note">
-        The DEA layer covers all of Australia, so colours continue past the Gold Coast boundary and up to about 130 km
-        out to sea, where the sea is mapped as Water. DEA advises against using its classes over the ocean.
+        Clipped to the Gold Coast boundary by this project from DEA's Level 3 GeoTIFFs. Class codes and colours are
+        unchanged.
       </p>
     </>
   )
 }
 
-function SentinelDetails({ metadata, view }: { metadata: SentinelIndexMetadata; view: SentinelView }) {
+function SentinelDetails({
+  metadata,
+  year,
+  view,
+}: {
+  metadata: SentinelIndexMetadata
+  year: SentinelYear
+  view: SentinelView
+}) {
   const layer = findSentinelLayer(metadata, view)
 
   return (
@@ -162,7 +183,7 @@ function SentinelDetails({ metadata, view }: { metadata: SentinelIndexMetadata; 
         <p className="analysis-note">
           Classes come from a simple threshold rule on NDVI, NDBI and MNDWI. Candidate artificial surface is a
           screening result, not verified land cover, and bare soil or sand can fall into it or into Uncertain. Grey
-          marks pixels with fewer than {metadata.minimum_valid_observations} clear observations in 2025.
+          marks pixels with fewer than {metadata.minimum_valid_observations} clear observations in {year}.
         </p>
       ) : null}
       <p className="analysis-note">
@@ -194,6 +215,7 @@ export function AnalysisLayerPanel({
   onToggle,
   onSelectSource,
   onSelectDeaYear,
+  onSelectSentinelYear,
   onSelectSentinelView,
   onChangeOpacity,
   onToggleDisplaySmoothing,
@@ -202,18 +224,34 @@ export function AnalysisLayerPanel({
   const [isLegendOpen, setIsLegendOpen] = useState(isScreenRoomyEnoughForLegend)
   const headingId = useId()
   const sourceGroupName = useId()
-  const optionGroupName = useId()
+  const yearGroupName = useId()
+  const viewGroupName = useId()
   const opacityInputId = useId()
   const smoothingNoteId = useId()
   const detailsId = useId()
   const opacityPercent = Math.round(opacity * 100)
   const areLayerSettingsDisabled = !isMapReady || !selection.isEnabled
-  const isSentinelAvailable = sentinelMetadataStatus === 'ready' && sentinelMetadata !== null
+  const isSentinelAvailable = sentinelMetadataStatus === 'ready'
+  const selectedSentinelMetadata = sentinelMetadata[selection.sentinelYear]
   const layerName = selectedLayerName(selection, sentinelMetadata)
   const caption =
     selection.source === 'dea'
       ? `${selection.deaYear} · DEA Level 3 · ${deaLandCoverProduct.resolutionMetres} m pixels`
-      : `${layerName} · annual median · ${sentinelMetadata?.resolution_m ?? 20} m pixels`
+      : selectedSentinelMetadata
+        ? `${layerName} · median of ${formatAcquisitionPeriod(
+            selectedSentinelMetadata.period.first_acquisition,
+            selectedSentinelMetadata.period.last_acquisition,
+          )} · ${selectedSentinelMetadata.resolution_m} m pixels`
+        : layerName
+  const yearOptions: readonly number[] = selection.source === 'dea' ? landCoverYears : sentinelYears
+  const selectedYear = selection.source === 'dea' ? selection.deaYear : selection.sentinelYear
+  const selectYear = (year: number) => {
+    if (selection.source === 'dea') {
+      onSelectDeaYear(year as LandCoverYear)
+    } else {
+      onSelectSentinelYear(year as SentinelYear)
+    }
+  }
 
   return (
     <section className="analysis-panel" aria-labelledby={headingId}>
@@ -268,29 +306,33 @@ export function AnalysisLayerPanel({
       </fieldset>
 
       <fieldset className="analysis-group" disabled={areLayerSettingsDisabled}>
-        <legend className="analysis-label">{selection.source === 'dea' ? 'Year' : 'View (2025)'}</legend>
-        {selection.source === 'dea' ? (
-          <div className="segmented-control" style={{ gridTemplateColumns: `repeat(${landCoverYears.length}, 1fr)` }}>
-            {landCoverYears.map((optionYear) => (
-              <label key={optionYear} className="segmented-option">
-                <input
-                  type="radio"
-                  name={optionGroupName}
-                  value={optionYear}
-                  checked={optionYear === selection.deaYear}
-                  onChange={() => onSelectDeaYear(optionYear)}
-                />
-                <span>{optionYear}</span>
-              </label>
-            ))}
-          </div>
-        ) : (
+        <legend className="analysis-label">Year</legend>
+        <div className="segmented-control" style={{ gridTemplateColumns: `repeat(${yearOptions.length}, 1fr)` }}>
+          {yearOptions.map((optionYear) => (
+            <label key={`${selection.source}-${optionYear}`} className="segmented-option">
+              <input
+                type="radio"
+                name={yearGroupName}
+                value={optionYear}
+                checked={optionYear === selectedYear}
+                onChange={() => selectYear(optionYear)}
+                disabled={selection.source === 'sentinel' && !sentinelMetadata[optionYear as SentinelYear]}
+              />
+              <span>{optionYear}</span>
+            </label>
+          ))}
+        </div>
+      </fieldset>
+
+      {selection.source === 'sentinel' && (
+        <fieldset className="analysis-group" disabled={areLayerSettingsDisabled}>
+          <legend className="analysis-label">View</legend>
           <div className="segmented-control" style={{ gridTemplateColumns: `repeat(${sentinelViews.length}, 1fr)` }}>
             {sentinelViews.map((view) => (
               <label key={view} className="segmented-option">
                 <input
                   type="radio"
-                  name={optionGroupName}
+                  name={viewGroupName}
                   value={view}
                   checked={view === selection.sentinelView}
                   onChange={() => onSelectSentinelView(view)}
@@ -299,8 +341,8 @@ export function AnalysisLayerPanel({
               </label>
             ))}
           </div>
-        )}
-      </fieldset>
+        </fieldset>
+      )}
 
       <div className="analysis-opacity">
         <label htmlFor={opacityInputId} className="analysis-label">
@@ -322,23 +364,25 @@ export function AnalysisLayerPanel({
         </output>
       </div>
 
-      <div className="analysis-smoothing">
-        <button
-          type="button"
-          className="switch-toggle analysis-toggle smoothing-toggle"
-          aria-pressed={isDisplaySmoothed}
-          aria-describedby={smoothingNoteId}
-          onClick={onToggleDisplaySmoothing}
-          disabled={areLayerSettingsDisabled}
-        >
-          <span className="switch-toggle-track" aria-hidden="true" />
-          Smooth display
-        </button>
-        <p id={smoothingNoteId} className="analysis-note smoothing-note">
-          Smoothing blends neighbouring pixel colours on screen only. Blended colours are not extra classes or values.
-          Switch it off to see each pixel exactly.
-        </p>
-      </div>
+      {selection.source === 'dea' && (
+        <div className="analysis-smoothing">
+          <button
+            type="button"
+            className="switch-toggle analysis-toggle smoothing-toggle"
+            aria-pressed={isDisplaySmoothed}
+            aria-describedby={smoothingNoteId}
+            onClick={onToggleDisplaySmoothing}
+            disabled={areLayerSettingsDisabled}
+          >
+            <span className="switch-toggle-track" aria-hidden="true" />
+            Smooth display
+          </button>
+          <p id={smoothingNoteId} className="analysis-note smoothing-note">
+            Smoothing blends neighbouring pixel colours on screen only. Blended colours are not extra classes or values.
+            Switch it off to see each pixel exactly.
+          </p>
+        </div>
+      )}
 
       <p className="analysis-caption">{caption}</p>
 
@@ -368,8 +412,12 @@ export function AnalysisLayerPanel({
       </button>
 
       <div id={detailsId} className="analysis-details" hidden={!isLegendOpen}>
-        {selection.source === 'sentinel' && sentinelMetadata ? (
-          <SentinelDetails metadata={sentinelMetadata} view={selection.sentinelView} />
+        {selection.source === 'sentinel' && selectedSentinelMetadata ? (
+          <SentinelDetails
+            metadata={selectedSentinelMetadata}
+            year={selection.sentinelYear}
+            view={selection.sentinelView}
+          />
         ) : (
           <DeaDetails />
         )}

@@ -1,0 +1,78 @@
+{
+ "reference": "Visual interpretation of dated Esri World Imagery (Vantor) chips, cross-checked against Queensland Government 2022 aerial imagery; one interpreter, not field-verified.",
+ "scored_definition": "Assessment-set samples inside the study boundary whose reference label is vegetation, water, artificial or bare_or_sand with high or medium confidence. Mixed, low-confidence and outside-boundary samples are listed but not scored.",
+ "assessment_samples": 43,
+ "scored_samples": 29,
+ "rule_vs_reference": {
+  "samples": 29,
+  "agreeing": 22,
+  "proportion": 0.759,
+  "wilson_95": [
+   0.579,
+   0.878
+  ]
+ },
+ "dea_2025_vs_reference": {
+  "samples": 29,
+  "agreeing": 20,
+  "proportion": 0.69,
+  "wilson_95": [
+   0.508,
+   0.827
+  ]
+ },
+ "reference_artificial_detected": {
+  "samples": 7,
+  "rule_candidate_artificial": 3,
+  "dea_2025_artificial_surface": 2
+ },
+ "samples_outside_study_area": [
+  "C13",
+  "C14",
+  "A17",
+  "A22",
+  "A23",
+  "A24",
+  "A26"
+ ],
+ "rule_agrees_with_dea_2025_inside_study_area": {
+  "samples": 68,
+  "agreeing": 42,
+  "proportion": 0.618,
+  "wilson_95": [
+   0.499,
+   0.724
+  ]
+ },
+ "rule_confusion": {
+  "artificial -> artificial": 3,
+  "artificial -> uncertain_or_other": 4,
+  "bare_or_sand -> artificial": 2,
+  "bare_or_sand -> uncertain_or_other": 3,
+  "vegetation -> vegetation": 13,
+  "water -> artificial": 1,
+  "water -> water": 3
+ },
+ "dea_2025_confusion": {
+  "artificial -> artificial": 2,
+  "artificial -> vegetation": 5,
+  "bare_or_sand -> artificial": 2,
+  "bare_or_sand -> bare_or_sand": 1,
+  "bare_or_sand -> vegetation": 2,
+  "vegetation -> vegetation": 13,
+  "water -> water": 4
+ },
+ "rule_limits": {
+  "water_at_least": 0.30000000000000004,
+  "not_water_at_most": 0.1,
+  "vegetation_at_least": 0.65,
+  "not_vegetation_at_most": 0.5499999999999999,
+  "artificial_ndbi_at_least": -0.15,
+  "bare_or_sand_ndbi_from": 0.0,
+  "bare_or_sand_ndbi_below": 0.15
+ },
+ "outputs": [
+  "analysis/results/2025/sample_assessment.csv",
+  "analysis/results/2025/assessment_summary.json"
+ ]
+}

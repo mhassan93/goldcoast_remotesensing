@@ -3,7 +3,7 @@ import { defineConfig, type Plugin } from 'vite'
 
 const pagesBasePath = process.env.PAGES_BASE_PATH ?? ''
 
-const mapServiceOrigins = ['https://tiles.openfreemap.org', 'https://tiles.mapterhorn.com', 'https://ows.dea.ga.gov.au']
+const mapServiceOrigins = ['https://tiles.openfreemap.org', 'https://tiles.mapterhorn.com']
 
 const productionContentSecurityPolicy = [
   "default-src 'self'",

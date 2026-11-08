@@ -5,8 +5,7 @@ boundary_crs = "EPSG:7844"
 [imagery]
 stac_api = "https://earth-search.aws.element84.com/v1"
 collection = "sentinel-2-c1-l2a"
-start = "2025-01-01T00:00:00Z"
-end = "2025-12-31T23:59:59.999Z"
+years = [2020, 2025]
 quality_asset = "scl"
 minimum_clear_fraction = 0.01
 parallel_acquisitions = 4
@@ -58,14 +57,56 @@ uncertain_other = 4
 insufficient_observations = 5
 
 [assessment]
+year = 2025
 samples = "analysis/samples.csv"
 dea_level3_mosaic = "https://dea-public-data.s3.ap-southeast-2.amazonaws.com/derivative/ga_ls_landcover_class_cyear_3/2-0-0/continental_mosaics/{year}--P1Y/ga_ls_landcover_class_cyear_3_mosaic_{year}--P1Y_level3.tif"
 dea_years = [2010, 2025]
 reference_imagery = "https://services.arcgisonline.com/arcgis/rest/services/World_Imagery/MapServer"
 earlier_reference_imagery = "https://spatial-img.information.qld.gov.au/arcgis/rest/services/Basemaps/LatestStateProgram_AllUsers/ImageServer"
 
+[dea_land_cover]
+years = [2010, 2015, 2020, 2025]
+version = "2.0.0"
+crs = "EPSG:3577"
+resolution = 30
+nodata = 255
+source_margin_m = 1500
+output = "public/data/dea-land-cover"
+min_zoom = 7
+max_zoom = 14
+
+[[dea_land_cover.classes]]
+value = 111
+name = "Cultivated Terrestrial Vegetation"
+color = "#acbc2d"
+
+[[dea_land_cover.classes]]
+value = 112
+name = "(Semi-)Natural Terrestrial Vegetation"
+color = "#0e7912"
+
+[[dea_land_cover.classes]]
+value = 124
+name = "Natural Aquatic Vegetation"
+color = "#1ebf79"
+
+[[dea_land_cover.classes]]
+value = 215
+name = "Artificial Surface"
+color = "#da5c69"
+
+[[dea_land_cover.classes]]
+value = 216
+name = "Natural Bare Surface"
+color = "#f3ab69"
+
+[[dea_land_cover.classes]]
+value = 220
+name = "Water"
+color = "#4d9fdc"
+
 [web]
-output = "public/data/sentinel2-2025"
+output = "public/data/sentinel2-{year}"
 min_zoom = 8
 max_zoom = 13
 tile_size = 256

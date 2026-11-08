@@ -1,0 +1,2834 @@
+{
+ "plan": {
+  "completed": "2026-11-08T12:13:01+00:00",
+  "stac_api": "https://earth-search.aws.element84.com/v1",
+  "collection": "sentinel-2-c1-l2a",
+  "search_bbox_lonlat": [
+   153.168916182,
+   -28.26511344,
+   153.551945912,
+   -27.690382825
+  ],
+  "datetime_range": [
+   "2020-01-01T00:00:00Z",
+   "2020-12-31T23:59:59.999Z"
+  ],
+  "item_count": 285,
+  "acquisition_count": 143,
+  "tiles": {
+   "MGRS-56JNP": {
+    "epsg": 32756,
+    "left": 499980,
+    "top": 6900040,
+    "right": 609780,
+    "bottom": 6790240
+   },
+   "MGRS-56JNQ": {
+    "epsg": 32756,
+    "left": 499980,
+    "top": 7000000,
+    "right": 609780,
+    "bottom": 6890200
+   }
+  },
+  "grid": {
+   "crs": "EPSG:32756",
+   "resolution_m": 20,
+   "bounds": [
+    516620,
+    6873400,
+    554200,
+    6937080
+   ],
+   "width": 1879,
+   "height": 3184,
+   "transform": [
+    20.0,
+    0.0,
+    516620.0,
+    0.0,
+    -20.0,
+    6937080.0
+   ]
+  },
+  "grid_parts": [
+   {
+    "tile": "MGRS-56JNQ",
+    "row_start": 0,
+    "row_end": 2098
+   },
+   {
+    "tile": "MGRS-56JNP",
+    "row_start": 2098,
+    "row_end": 3184
+   }
+  ],
+  "boundary_transformation": {
+   "source": "EPSG:7844",
+   "target": "EPSG:32756",
+   "operation": "GDA2020 to WGS 84 (2) + UTM zone 56S (with axis order normalized for visualization)",
+   "stated_accuracy_m": 3.0
+  },
+  "assets": {
+   "green": "green",
+   "red": "red",
+   "nir": "nir08",
+   "swir1": "swir16",
+   "scl": "scl"
+  },
+  "processing_baselines": [
+   "05.00"
+  ],
+  "platforms": [
+   "sentinel-2a",
+   "sentinel-2b"
+  ],
+  "relative_orbits": [
+   30,
+   130
+  ],
+  "full_tile_bytes_for_needed_assets": 94785166067,
+  "windowed_read_estimate_bytes": 3976977819,
+  "seconds": 6.4
+ },
+ "acquire": {
+  "completed": "2026-11-08T12:52:47+00:00",
+  "acquisitions_considered": 143,
+  "acquisitions_stored": 125,
+  "acquisitions_skipped_below_clear_fraction": 18,
+  "minimum_clear_fraction": 0.01,
+  "compressed_bytes_read": 5524228044,
+  "reads_with_unknown_size": 0,
+  "cache_bytes": 3803308022,
+  "seconds_this_run": 0.5,
+  "sum_of_acquisition_seconds": 9311.3,
+  "parallel_acquisitions": 4,
+  "acquisitions": [
+   {
+    "id": "S2B_20200101T235239_014742",
+    "datetime": "2020-01-01T23:54:19.019000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20200101T235240_L2A",
+     "S2B_T56JNQ_20200101T235240_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.62628,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200105T000239_014785",
+    "datetime": "2020-01-05T00:04:14.605000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20200105T000235_L2A",
+     "S2B_T56JNQ_20200105T000235_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.74896,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200106T235241_023722",
+    "datetime": "2020-01-06T23:54:18.435000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20200106T235239_L2A",
+     "S2A_T56JNQ_20200106T235239_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.00109,
+    "stored": false
+   },
+   {
+    "id": "S2A_20200110T000231_023765",
+    "datetime": "2020-01-10T00:04:14.053000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20200110T000234_L2A",
+     "S2A_T56JNQ_20200110T000234_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.28402,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200111T235239_014885",
+    "datetime": "2020-01-11T23:54:18.512000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20200111T235239_L2A",
+     "S2B_T56JNQ_20200111T235239_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.22684,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200115T000239_014928",
+    "datetime": "2020-01-15T00:04:13.924000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20200115T000234_L2A",
+     "S2B_T56JNQ_20200115T000234_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.25775,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200116T235241_023865",
+    "datetime": "2020-01-16T23:54:17.954000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20200116T235239_L2A",
+     "S2A_T56JNQ_20200116T235239_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.21142,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200120T000231_023908",
+    "datetime": "2020-01-20T00:04:13.387000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20200120T000234_L2A",
+     "S2A_T56JNQ_20200120T000234_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.37993,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200121T235239_015028",
+    "datetime": "2020-01-21T23:54:17.417000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20200121T235238_L2A",
+     "S2B_T56JNQ_20200121T235238_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.98388,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200125T000239_015071",
+    "datetime": "2020-01-25T00:04:12.708000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20200125T000233_L2A",
+     "S2B_T56JNQ_20200125T000233_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.32689,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200126T235241_024008",
+    "datetime": "2020-01-26T23:54:16.987000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20200126T235238_L2A",
+     "S2A_T56JNQ_20200126T235238_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.30257,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200130T000231_024051",
+    "datetime": "2020-01-30T00:04:12.271000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20200130T000233_L2A",
+     "S2A_T56JNQ_20200130T000233_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.24008,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200204T000239_015214",
+    "datetime": "2020-02-04T00:04:13.151000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20200204T000233_L2A",
+     "S2B_T56JNQ_20200204T000233_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.0,
+    "stored": false
+   },
+   {
+    "id": "S2A_20200205T235241_024151",
+    "datetime": "2020-02-05T23:54:15.589000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20200205T235236_L2A",
+     "S2A_T56JNQ_20200205T235236_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.0,
+    "stored": false
+   },
+   {
+    "id": "S2A_20200209T000231_024194",
+    "datetime": "2020-02-09T00:04:11.936000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20200209T000232_L2A",
+     "S2A_T56JNQ_20200209T000232_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.00489,
+    "stored": false
+   },
+   {
+    "id": "S2B_20200210T235239_015314",
+    "datetime": "2020-02-10T23:54:18.884000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20200210T235239_L2A",
+     "S2B_T56JNQ_20200210T235239_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.23223,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200214T000239_015357",
+    "datetime": "2020-02-14T00:04:15.072000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20200214T000235_L2A",
+     "S2B_T56JNQ_20200214T000235_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.57673,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200215T235241_024294",
+    "datetime": "2020-02-15T23:54:17.534000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20200215T235238_L2A",
+     "S2A_T56JNQ_20200215T235238_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.6856,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200219T000231_024337",
+    "datetime": "2020-02-19T00:04:13.716000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20200219T000234_L2A",
+     "S2A_T56JNQ_20200219T000234_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.61566,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200220T235239_015457",
+    "datetime": "2020-02-20T23:54:20.416000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20200220T235241_L2A",
+     "S2B_T56JNQ_20200220T235241_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.53136,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200224T000239_015500",
+    "datetime": "2020-02-24T00:04:16.472000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20200224T000237_L2A",
+     "S2B_T56JNQ_20200224T000237_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.0,
+    "stored": false
+   },
+   {
+    "id": "S2A_20200225T235241_024437",
+    "datetime": "2020-02-25T23:54:18.992000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20200225T235240_L2A",
+     "S2A_T56JNQ_20200225T235240_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.39523,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200229T000241_024480",
+    "datetime": "2020-02-29T00:04:14.992000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20200229T000235_L2A",
+     "S2A_T56JNQ_20200229T000235_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.42181,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200301T235239_015600",
+    "datetime": "2020-03-01T23:54:21.415000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20200301T235242_L2A",
+     "S2B_T56JNQ_20200301T235242_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.98573,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200305T000239_015643",
+    "datetime": "2020-03-05T00:04:17.305000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20200305T000237_L2A",
+     "S2B_T56JNQ_20200305T000237_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.03307,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200306T235241_024580",
+    "datetime": "2020-03-06T23:54:19.880000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20200306T235241_L2A",
+     "S2A_T56JNQ_20200306T235241_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.61205,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200310T000241_024623",
+    "datetime": "2020-03-10T00:04:15.744000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20200310T000236_L2A",
+     "S2A_T56JNQ_20200310T000236_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.01121,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200311T235239_015743",
+    "datetime": "2020-03-11T23:54:21.926000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20200311T235246_L2A",
+     "S2B_T56JNQ_20200311T235246_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.03094,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200315T000239_015786",
+    "datetime": "2020-03-15T00:04:17.659000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20200315T000238_L2A",
+     "S2B_T56JNQ_20200315T000238_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.43503,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200316T235241_024723",
+    "datetime": "2020-03-16T23:54:20.262000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20200316T235241_L2A",
+     "S2A_T56JNQ_20200316T235241_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.62147,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200320T000241_024766",
+    "datetime": "2020-03-20T00:04:15.978000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20200320T000236_L2A",
+     "S2A_T56JNQ_20200320T000236_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.74338,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200321T235239_015886",
+    "datetime": "2020-03-21T23:54:21.912000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20200321T235242_L2A",
+     "S2B_T56JNQ_20200321T235242_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.62404,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200325T000239_015929",
+    "datetime": "2020-03-25T00:04:17.509000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20200325T000238_L2A",
+     "S2B_T56JNQ_20200325T000238_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.02216,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200326T235241_024866",
+    "datetime": "2020-03-26T23:54:20.166000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20200326T235241_L2A",
+     "S2A_T56JNQ_20200326T235241_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.22772,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200330T000241_024909",
+    "datetime": "2020-03-30T00:04:15.710000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20200330T000236_L2A",
+     "S2A_T56JNQ_20200330T000236_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.07675,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200331T235239_016029",
+    "datetime": "2020-03-31T23:54:21.384000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20200331T235242_L2A",
+     "S2B_T56JNQ_20200331T235242_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.64541,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200404T000239_016072",
+    "datetime": "2020-04-04T00:04:16.819000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20200404T000237_L2A",
+     "S2B_T56JNQ_20200404T000237_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.28286,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200405T235241_025009",
+    "datetime": "2020-04-05T23:54:20.847000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20200405T235242_L2A",
+     "S2A_T56JNQ_20200405T235242_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.93326,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200409T000241_025052",
+    "datetime": "2020-04-09T00:04:17.443000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20200409T000238_L2A",
+     "S2A_T56JNQ_20200409T000238_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.11213,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200410T235239_016172",
+    "datetime": "2020-04-10T23:54:20.346000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20200410T235241_L2A",
+     "S2B_T56JNQ_20200410T235241_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.40854,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200414T000239_016215",
+    "datetime": "2020-04-14T00:04:15.613000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20200414T000236_L2A",
+     "S2B_T56JNQ_20200414T000236_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.65623,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200415T235241_025152",
+    "datetime": "2020-04-15T23:54:23.665000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20200415T235244_L2A",
+     "S2A_T56JNQ_20200415T235244_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.99279,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200419T000241_025195",
+    "datetime": "2020-04-19T00:04:20.093000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20200419T000241_L2A",
+     "S2A_T56JNQ_20200419T000241_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.0,
+    "stored": false
+   },
+   {
+    "id": "S2B_20200420T235239_016315",
+    "datetime": "2020-04-20T23:54:18.747000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20200420T235239_L2A",
+     "S2B_T56JNQ_20200420T235239_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.99813,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200424T000239_016358",
+    "datetime": "2020-04-24T00:04:14.037000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20200424T000328_L2A",
+     "S2B_T56JNQ_20200424T000328_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.50151,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200425T235251_025295",
+    "datetime": "2020-04-25T23:54:26.023000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20200425T235247_L2A",
+     "S2A_T56JNQ_20200425T235247_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.99314,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200429T000241_025338",
+    "datetime": "2020-04-29T00:04:22.280000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20200429T000243_L2A",
+     "S2A_T56JNQ_20200429T000243_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.32106,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200430T235239_016458",
+    "datetime": "2020-04-30T23:54:20.228000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20200430T235241_L2A",
+     "S2B_T56JNQ_20200430T235241_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.72053,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200504T000239_016501",
+    "datetime": "2020-05-04T00:04:16.649000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20200504T000237_L2A",
+     "S2B_T56JNQ_20200504T000237_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.73977,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200505T235251_025438",
+    "datetime": "2020-05-05T23:54:27.816000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20200505T235249_L2A",
+     "S2A_T56JNQ_20200505T235249_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.23721,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200509T000241_025481",
+    "datetime": "2020-05-09T00:04:23.921000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20200509T000244_L2A",
+     "S2A_T56JNQ_20200509T000244_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.03876,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200510T235249_016601",
+    "datetime": "2020-05-10T23:54:22.484000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20200510T235243_L2A",
+     "S2B_T56JNQ_20200510T235243_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.99453,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200514T000239_016644",
+    "datetime": "2020-05-14T00:04:18.738000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20200514T000239_L2A",
+     "S2B_T56JNQ_20200514T000239_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.54455,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200515T235251_025581",
+    "datetime": "2020-05-15T23:54:29.105000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNQ_20200515T235250_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ"
+    ],
+    "clear_fraction_in_boundary": 0.58128,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200519T000251_025624",
+    "datetime": "2020-05-19T00:04:25.071000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20200519T000246_L2A",
+     "S2A_T56JNQ_20200519T000246_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.51437,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200520T235249_016744",
+    "datetime": "2020-05-20T23:54:24.229000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20200520T235245_L2A",
+     "S2B_T56JNQ_20200520T235245_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.0,
+    "stored": false
+   },
+   {
+    "id": "S2B_20200524T000239_016787",
+    "datetime": "2020-05-24T00:04:20.351000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20200524T000241_L2A",
+     "S2B_T56JNQ_20200524T000241_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.7093,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200525T235251_025724",
+    "datetime": "2020-05-25T23:54:29.955000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20200525T235251_L2A",
+     "S2A_T56JNQ_20200525T235251_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.99491,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200529T000251_025767",
+    "datetime": "2020-05-29T00:04:25.761000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20200529T000246_L2A",
+     "S2A_T56JNQ_20200529T000246_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.26702,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200530T235249_016887",
+    "datetime": "2020-05-30T23:54:25.468000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20200530T235246_L2A",
+     "S2B_T56JNQ_20200530T235246_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.0,
+    "stored": false
+   },
+   {
+    "id": "S2B_20200603T000239_016930",
+    "datetime": "2020-06-03T00:04:21.432000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20200603T000242_L2A",
+     "S2B_T56JNQ_20200603T000242_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.70471,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200604T235251_025867",
+    "datetime": "2020-06-04T23:54:30.287000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20200604T235251_L2A",
+     "S2A_T56JNQ_20200604T235251_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.77261,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200608T000251_025910",
+    "datetime": "2020-06-08T00:04:25.964000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20200608T000246_L2A",
+     "S2A_T56JNQ_20200608T000246_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.49973,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200609T235249_017030",
+    "datetime": "2020-06-09T23:54:26.222000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20200609T235247_L2A",
+     "S2B_T56JNQ_20200609T235247_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.13672,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200613T000239_017073",
+    "datetime": "2020-06-13T00:04:22.020000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20200613T000242_L2A",
+     "S2B_T56JNQ_20200613T000242_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.66323,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200614T235251_026010",
+    "datetime": "2020-06-14T23:54:30.137000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20200614T235338_L2A",
+     "S2A_T56JNQ_20200614T235338_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.69896,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200618T000251_026053",
+    "datetime": "2020-06-18T00:04:25.684000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20200618T000246_L2A",
+     "S2A_T56JNQ_20200618T000246_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.41108,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200619T235249_017173",
+    "datetime": "2020-06-19T23:54:26.486000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20200619T235247_L2A",
+     "S2B_T56JNQ_20200619T235247_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.16215,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200623T000239_017216",
+    "datetime": "2020-06-23T00:04:22.177000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20200623T000242_L2A",
+     "S2B_T56JNQ_20200623T000242_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.71567,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200624T235251_026153",
+    "datetime": "2020-06-24T23:54:29.589000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20200624T235250_L2A",
+     "S2A_T56JNQ_20200624T235250_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.94566,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200628T000251_026196",
+    "datetime": "2020-06-28T00:04:25.004000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20200628T000245_L2A",
+     "S2A_T56JNQ_20200628T000245_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.00417,
+    "stored": false
+   },
+   {
+    "id": "S2B_20200629T235249_017316",
+    "datetime": "2020-06-29T23:54:26.316000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20200629T235247_L2A",
+     "S2B_T56JNQ_20200629T235247_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.35807,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200703T000239_017359",
+    "datetime": "2020-07-03T00:04:21.881000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20200703T000242_L2A",
+     "S2B_T56JNQ_20200703T000242_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.73058,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200704T235251_026296",
+    "datetime": "2020-07-04T23:54:28.604000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20200704T235249_L2A",
+     "S2A_T56JNQ_20200704T235249_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.99081,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200708T000241_026339",
+    "datetime": "2020-07-08T00:04:23.914000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20200708T000244_L2A",
+     "S2A_T56JNQ_20200708T000244_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.73198,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200709T235249_017459",
+    "datetime": "2020-07-09T23:54:25.765000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20200709T235246_L2A",
+     "S2B_T56JNQ_20200709T235246_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.00486,
+    "stored": false
+   },
+   {
+    "id": "S2B_20200713T000239_017502",
+    "datetime": "2020-07-13T00:04:21.203000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20200713T000241_L2A",
+     "S2B_T56JNQ_20200713T000241_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.20129,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200714T235251_026439",
+    "datetime": "2020-07-14T23:54:28.602000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20200714T235249_L2A",
+     "S2A_T56JNQ_20200714T235249_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.99166,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200718T000251_026482",
+    "datetime": "2020-07-18T00:04:24.592000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20200718T000245_L2A",
+     "S2A_T56JNQ_20200718T000245_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.7098,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200719T235249_017602",
+    "datetime": "2020-07-19T23:54:25.614000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20200719T235246_L2A",
+     "S2B_T56JNQ_20200719T235246_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.99412,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200723T000239_017645",
+    "datetime": "2020-07-23T00:04:21.688000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20200723T000242_L2A",
+     "S2B_T56JNQ_20200723T000242_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.0,
+    "stored": false
+   },
+   {
+    "id": "S2A_20200724T235251_026582",
+    "datetime": "2020-07-24T23:54:29.480000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20200724T235250_L2A",
+     "S2A_T56JNQ_20200724T235250_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.0009,
+    "stored": false
+   },
+   {
+    "id": "S2A_20200728T000251_026625",
+    "datetime": "2020-07-28T00:04:25.319000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20200728T000246_L2A",
+     "S2A_T56JNQ_20200728T000246_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.7158,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200729T235249_017745",
+    "datetime": "2020-07-29T23:54:26.674000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20200729T235247_L2A",
+     "S2B_T56JNQ_20200729T235247_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.99522,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200802T000249_017788",
+    "datetime": "2020-08-02T00:04:22.622000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20200802T000243_L2A",
+     "S2B_T56JNQ_20200802T000243_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.74039,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200803T235251_026725",
+    "datetime": "2020-08-03T23:54:29.920000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20200803T235251_L2A",
+     "S2A_T56JNQ_20200803T235251_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.04468,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200807T000251_026768",
+    "datetime": "2020-08-07T00:04:25.637000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20200807T000246_L2A",
+     "S2A_T56JNQ_20200807T000246_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.18829,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200808T235249_017888",
+    "datetime": "2020-08-08T23:54:27.351000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20200808T235248_L2A",
+     "S2B_T56JNQ_20200808T235248_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.9946,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200812T000249_017931",
+    "datetime": "2020-08-12T00:04:23.138000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20200812T000243_L2A",
+     "S2B_T56JNQ_20200812T000243_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.47726,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200813T235251_026868",
+    "datetime": "2020-08-13T23:54:29.890000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20200813T235251_L2A",
+     "S2A_T56JNQ_20200813T235251_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.52667,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200817T000251_026911",
+    "datetime": "2020-08-17T00:04:25.483000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20200817T000246_L2A",
+     "S2A_T56JNQ_20200817T000246_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.70949,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200818T235249_018031",
+    "datetime": "2020-08-18T23:54:27.568000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20200818T235248_L2A",
+     "S2B_T56JNQ_20200818T235248_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.72937,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200822T000249_018074",
+    "datetime": "2020-08-22T00:04:23.249000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20200822T000243_L2A",
+     "S2B_T56JNQ_20200822T000243_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.00494,
+    "stored": false
+   },
+   {
+    "id": "S2A_20200823T235251_027011",
+    "datetime": "2020-08-23T23:54:29.477000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20200823T235402_L2A",
+     "S2A_T56JNQ_20200823T235402_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.99267,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200827T000251_027054",
+    "datetime": "2020-08-27T00:04:24.921000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20200827T000245_L2A",
+     "S2A_T56JNQ_20200827T000245_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.61221,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200828T235249_018174",
+    "datetime": "2020-08-28T23:54:27.334000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20200828T235248_L2A",
+     "S2B_T56JNQ_20200828T235248_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.59966,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200901T000249_018217",
+    "datetime": "2020-09-01T00:04:22.895000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20200901T000243_L2A",
+     "S2B_T56JNQ_20200901T000243_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.6936,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200902T235251_027154",
+    "datetime": "2020-09-02T23:54:28.631000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20200902T235249_L2A",
+     "S2A_T56JNQ_20200902T235249_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.40623,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200906T000241_027197",
+    "datetime": "2020-09-06T00:04:23.963000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20200906T000244_L2A",
+     "S2A_T56JNQ_20200906T000244_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.03228,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200907T235249_018317",
+    "datetime": "2020-09-07T23:54:26.679000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20200907T235247_L2A",
+     "S2B_T56JNQ_20200907T235247_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.45467,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200911T000239_018360",
+    "datetime": "2020-09-11T00:04:22.065000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20200911T000242_L2A",
+     "S2B_T56JNQ_20200911T000242_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.33827,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200912T235251_027297",
+    "datetime": "2020-09-12T23:54:27.969000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20200912T235249_L2A",
+     "S2A_T56JNQ_20200912T235249_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.13285,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200916T000241_027340",
+    "datetime": "2020-09-16T00:04:24.039000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20200916T000244_L2A",
+     "S2A_T56JNQ_20200916T000244_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.26401,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200917T235249_018460",
+    "datetime": "2020-09-17T23:54:25.663000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20200917T235246_L2A",
+     "S2B_T56JNQ_20200917T235246_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.44363,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200921T000239_018503",
+    "datetime": "2020-09-21T00:04:21.772000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20200921T000242_L2A",
+     "S2B_T56JNQ_20200921T000242_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.38722,
+    "stored": true
+   },
+   {
+    "id": "S2A_20200922T235251_027440",
+    "datetime": "2020-09-22T23:54:29.105000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20200922T235250_L2A",
+     "S2A_T56JNQ_20200922T235250_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.00012,
+    "stored": false
+   },
+   {
+    "id": "S2A_20200926T000251_027483",
+    "datetime": "2020-09-26T00:04:25.007000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20200926T000245_L2A",
+     "S2A_T56JNQ_20200926T000245_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.66517,
+    "stored": true
+   },
+   {
+    "id": "S2B_20200927T235249_018603",
+    "datetime": "2020-09-27T23:54:26.892000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20200927T235247_L2A",
+     "S2B_T56JNQ_20200927T235247_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.62977,
+    "stored": true
+   },
+   {
+    "id": "S2B_20201001T000249_018646",
+    "datetime": "2020-10-01T00:04:22.852000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20201001T000243_L2A",
+     "S2B_T56JNQ_20201001T000243_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.6231,
+    "stored": true
+   },
+   {
+    "id": "S2A_20201002T235251_027583",
+    "datetime": "2020-10-02T23:54:29.742000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20201002T235251_L2A",
+     "S2A_T56JNQ_20201002T235251_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.72207,
+    "stored": true
+   },
+   {
+    "id": "S2B_20201007T235249_018746",
+    "datetime": "2020-10-07T23:54:27.605000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20201007T235248_L2A",
+     "S2B_T56JNQ_20201007T235248_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.15728,
+    "stored": true
+   },
+   {
+    "id": "S2B_20201011T000249_018789",
+    "datetime": "2020-10-11T00:04:23.349000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20201011T000244_L2A",
+     "S2B_T56JNQ_20201011T000244_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.63036,
+    "stored": true
+   },
+   {
+    "id": "S2A_20201012T235251_027726",
+    "datetime": "2020-10-12T23:54:29.773000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20201012T235251_L2A",
+     "S2A_T56JNQ_20201012T235251_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.53352,
+    "stored": true
+   },
+   {
+    "id": "S2A_20201016T000251_027769",
+    "datetime": "2020-10-16T00:04:25.362000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20201016T000246_L2A",
+     "S2A_T56JNQ_20201016T000246_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.69255,
+    "stored": true
+   },
+   {
+    "id": "S2B_20201017T235249_018889",
+    "datetime": "2020-10-17T23:54:27.673000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20201017T235248_L2A",
+     "S2B_T56JNQ_20201017T235248_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.71186,
+    "stored": true
+   },
+   {
+    "id": "S2B_20201021T000249_018932",
+    "datetime": "2020-10-21T00:04:23.251000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20201021T000243_L2A",
+     "S2B_T56JNQ_20201021T000243_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.69832,
+    "stored": true
+   },
+   {
+    "id": "S2A_20201026T000251_027912",
+    "datetime": "2020-10-26T00:04:24.959000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20201026T000245_L2A",
+     "S2A_T56JNQ_20201026T000245_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.00014,
+    "stored": false
+   },
+   {
+    "id": "S2B_20201027T235249_019032",
+    "datetime": "2020-10-27T23:54:27.105000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20201027T235248_L2A",
+     "S2B_T56JNQ_20201027T235248_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.21723,
+    "stored": true
+   },
+   {
+    "id": "S2B_20201031T000249_019075",
+    "datetime": "2020-10-31T00:04:22.510000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20201031T000243_L2A",
+     "S2B_T56JNQ_20201031T000243_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.22914,
+    "stored": true
+   },
+   {
+    "id": "S2A_20201101T235251_028012",
+    "datetime": "2020-11-01T23:54:28.987000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20201101T235250_L2A",
+     "S2A_T56JNQ_20201101T235250_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.74259,
+    "stored": true
+   },
+   {
+    "id": "S2A_20201105T000251_028055",
+    "datetime": "2020-11-05T00:04:24.400000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20201105T000245_L2A",
+     "S2A_T56JNQ_20201105T000245_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.6877,
+    "stored": true
+   },
+   {
+    "id": "S2B_20201106T235249_019175",
+    "datetime": "2020-11-06T23:54:25.875000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20201106T235246_L2A",
+     "S2B_T56JNQ_20201106T235246_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.19216,
+    "stored": true
+   },
+   {
+    "id": "S2B_20201110T000239_019218",
+    "datetime": "2020-11-10T00:04:21.045000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20201110T000241_L2A",
+     "S2B_T56JNQ_20201110T000241_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.33502,
+    "stored": true
+   },
+   {
+    "id": "S2A_20201111T235251_028155",
+    "datetime": "2020-11-11T23:54:27.878000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20201111T235249_L2A",
+     "S2A_T56JNQ_20201111T235249_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.07889,
+    "stored": true
+   },
+   {
+    "id": "S2A_20201115T000241_028198",
+    "datetime": "2020-11-15T00:04:23.099000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20201115T000244_L2A",
+     "S2A_T56JNQ_20201115T000244_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.69571,
+    "stored": true
+   },
+   {
+    "id": "S2B_20201120T000239_019361",
+    "datetime": "2020-11-20T00:04:20.278000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20201120T000240_L2A",
+     "S2B_T56JNQ_20201120T000240_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.73127,
+    "stored": true
+   },
+   {
+    "id": "S2A_20201121T235251_028298",
+    "datetime": "2020-11-21T23:54:26.065000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20201121T235247_L2A",
+     "S2A_T56JNQ_20201121T235247_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.99283,
+    "stored": true
+   },
+   {
+    "id": "S2A_20201125T000241_028341",
+    "datetime": "2020-11-25T00:04:21.027000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20201125T000241_L2A",
+     "S2A_T56JNQ_20201125T000241_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.12086,
+    "stored": true
+   },
+   {
+    "id": "S2B_20201126T235249_019461",
+    "datetime": "2020-11-26T23:54:23.933000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20201126T235244_L2A",
+     "S2B_T56JNQ_20201126T235244_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.49126,
+    "stored": true
+   },
+   {
+    "id": "S2B_20201130T000239_019504",
+    "datetime": "2020-11-30T00:04:19.218000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20201130T000239_L2A",
+     "S2B_T56JNQ_20201130T000239_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.34886,
+    "stored": true
+   },
+   {
+    "id": "S2A_20201201T235241_028441",
+    "datetime": "2020-12-01T23:54:23.427000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20201201T235244_L2A",
+     "S2A_T56JNQ_20201201T235244_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.93591,
+    "stored": true
+   },
+   {
+    "id": "S2A_20201205T000241_028484",
+    "datetime": "2020-12-05T00:04:18.111000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20201205T000238_L2A",
+     "S2A_T56JNQ_20201205T000238_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.73877,
+    "stored": true
+   },
+   {
+    "id": "S2B_20201206T235249_019604",
+    "datetime": "2020-12-06T23:54:22.211000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20201206T235243_L2A",
+     "S2B_T56JNQ_20201206T235243_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.00067,
+    "stored": false
+   },
+   {
+    "id": "S2B_20201210T000239_019647",
+    "datetime": "2020-12-10T00:04:17.203000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20201210T000237_L2A",
+     "S2B_T56JNQ_20201210T000237_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.18443,
+    "stored": true
+   },
+   {
+    "id": "S2A_20201211T235241_028584",
+    "datetime": "2020-12-11T23:54:20.637000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20201211T235241_L2A",
+     "S2A_T56JNQ_20201211T235241_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.0,
+    "stored": false
+   },
+   {
+    "id": "S2A_20201215T000241_028627",
+    "datetime": "2020-12-15T00:04:17.042000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20201215T000237_L2A",
+     "S2A_T56JNQ_20201215T000237_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.35853,
+    "stored": true
+   },
+   {
+    "id": "S2B_20201216T235239_019747",
+    "datetime": "2020-12-16T23:54:19.647000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20201216T235240_L2A",
+     "S2B_T56JNQ_20201216T235240_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.01092,
+    "stored": true
+   },
+   {
+    "id": "S2B_20201220T000239_019790",
+    "datetime": "2020-12-20T00:04:15.687000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20201220T000236_L2A",
+     "S2B_T56JNQ_20201220T000236_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.45672,
+    "stored": true
+   },
+   {
+    "id": "S2A_20201221T235241_028727",
+    "datetime": "2020-12-21T23:54:22.748000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20201221T235244_L2A",
+     "S2A_T56JNQ_20201221T235244_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.39994,
+    "stored": true
+   },
+   {
+    "id": "S2A_20201225T000241_028770",
+    "datetime": "2020-12-25T00:04:18.905000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2A_T56JNP_20201225T000239_L2A",
+     "S2A_T56JNQ_20201225T000239_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.22037,
+    "stored": true
+   },
+   {
+    "id": "S2B_20201226T235239_019890",
+    "datetime": "2020-12-26T23:54:21.477000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2B_T56JNP_20201226T235242_L2A",
+     "S2B_T56JNQ_20201226T235242_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.52552,
+    "stored": true
+   },
+   {
+    "id": "S2B_20201230T000239_019933",
+    "datetime": "2020-12-30T00:04:17.695000Z",
+    "platform": "sentinel-2b",
+    "relative_orbit": 30,
+    "item_ids": [
+     "S2B_T56JNP_20201230T000238_L2A",
+     "S2B_T56JNQ_20201230T000238_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.0,
+    "stored": false
+   },
+   {
+    "id": "S2A_20201231T235251_028870",
+    "datetime": "2020-12-31T23:54:24.126000Z",
+    "platform": "sentinel-2a",
+    "relative_orbit": 130,
+    "item_ids": [
+     "S2A_T56JNP_20201231T235245_L2A",
+     "S2A_T56JNQ_20201231T235245_L2A"
+    ],
+    "tiles_used": [
+     "MGRS-56JNQ",
+     "MGRS-56JNP"
+    ],
+    "clear_fraction_in_boundary": 0.2296,
+    "stored": true
+   }
+  ]
+ },
+ "composite": {
+  "completed": "2026-11-08T12:55:45+00:00",
+  "method": "median of per-observation index values",
+  "indices_calculated": "per observation, before compositing",
+  "period": [
+   "2020-01-01T00:00:00Z",
+   "2020-12-31T23:59:59.999Z"
+  ],
+  "acquisitions_used": 125,
+  "acquisition_ids": [
+   "S2B_20200101T235239_014742",
+   "S2B_20200105T000239_014785",
+   "S2A_20200110T000231_023765",
+   "S2B_20200111T235239_014885",
+   "S2B_20200115T000239_014928",
+   "S2A_20200116T235241_023865",
+   "S2A_20200120T000231_023908",
+   "S2B_20200121T235239_015028",
+   "S2B_20200125T000239_015071",
+   "S2A_20200126T235241_024008",
+   "S2A_20200130T000231_024051",
+   "S2B_20200210T235239_015314",
+   "S2B_20200214T000239_015357",
+   "S2A_20200215T235241_024294",
+   "S2A_20200219T000231_024337",
+   "S2B_20200220T235239_015457",
+   "S2A_20200225T235241_024437",
+   "S2A_20200229T000241_024480",
+   "S2B_20200301T235239_015600",
+   "S2B_20200305T000239_015643",
+   "S2A_20200306T235241_024580",
+   "S2A_20200310T000241_024623",
+   "S2B_20200311T235239_015743",
+   "S2B_20200315T000239_015786",
+   "S2A_20200316T235241_024723",
+   "S2A_20200320T000241_024766",
+   "S2B_20200321T235239_015886",
+   "S2B_20200325T000239_015929",
+   "S2A_20200326T235241_024866",
+   "S2A_20200330T000241_024909",
+   "S2B_20200331T235239_016029",
+   "S2B_20200404T000239_016072",
+   "S2A_20200405T235241_025009",
+   "S2A_20200409T000241_025052",
+   "S2B_20200410T235239_016172",
+   "S2B_20200414T000239_016215",
+   "S2A_20200415T235241_025152",
+   "S2B_20200420T235239_016315",
+   "S2B_20200424T000239_016358",
+   "S2A_20200425T235251_025295",
+   "S2A_20200429T000241_025338",
+   "S2B_20200430T235239_016458",
+   "S2B_20200504T000239_016501",
+   "S2A_20200505T235251_025438",
+   "S2A_20200509T000241_025481",
+   "S2B_20200510T235249_016601",
+   "S2B_20200514T000239_016644",
+   "S2A_20200515T235251_025581",
+   "S2A_20200519T000251_025624",
+   "S2B_20200524T000239_016787",
+   "S2A_20200525T235251_025724",
+   "S2A_20200529T000251_025767",
+   "S2B_20200603T000239_016930",
+   "S2A_20200604T235251_025867",
+   "S2A_20200608T000251_025910",
+   "S2B_20200609T235249_017030",
+   "S2B_20200613T000239_017073",
+   "S2A_20200614T235251_026010",
+   "S2A_20200618T000251_026053",
+   "S2B_20200619T235249_017173",
+   "S2B_20200623T000239_017216",
+   "S2A_20200624T235251_026153",
+   "S2B_20200629T235249_017316",
+   "S2B_20200703T000239_017359",
+   "S2A_20200704T235251_026296",
+   "S2A_20200708T000241_026339",
+   "S2B_20200713T000239_017502",
+   "S2A_20200714T235251_026439",
+   "S2A_20200718T000251_026482",
+   "S2B_20200719T235249_017602",
+   "S2A_20200728T000251_026625",
+   "S2B_20200729T235249_017745",
+   "S2B_20200802T000249_017788",
+   "S2A_20200803T235251_026725",
+   "S2A_20200807T000251_026768",
+   "S2B_20200808T235249_017888",
+   "S2B_20200812T000249_017931",
+   "S2A_20200813T235251_026868",
+   "S2A_20200817T000251_026911",
+   "S2B_20200818T235249_018031",
+   "S2A_20200823T235251_027011",
+   "S2A_20200827T000251_027054",
+   "S2B_20200828T235249_018174",
+   "S2B_20200901T000249_018217",
+   "S2A_20200902T235251_027154",
+   "S2A_20200906T000241_027197",
+   "S2B_20200907T235249_018317",
+   "S2B_20200911T000239_018360",
+   "S2A_20200912T235251_027297",
+   "S2A_20200916T000241_027340",
+   "S2B_20200917T235249_018460",
+   "S2B_20200921T000239_018503",
+   "S2A_20200926T000251_027483",
+   "S2B_20200927T235249_018603",
+   "S2B_20201001T000249_018646",
+   "S2A_20201002T235251_027583",
+   "S2B_20201007T235249_018746",
+   "S2B_20201011T000249_018789",
+   "S2A_20201012T235251_027726",
+   "S2A_20201016T000251_027769",
+   "S2B_20201017T235249_018889",
+   "S2B_20201021T000249_018932",
+   "S2B_20201027T235249_019032",
+   "S2B_20201031T000249_019075",
+   "S2A_20201101T235251_028012",
+   "S2A_20201105T000251_028055",
+   "S2B_20201106T235249_019175",
+   "S2B_20201110T000239_019218",
+   "S2A_20201111T235251_028155",
+   "S2A_20201115T000241_028198",
+   "S2B_20201120T000239_019361",
+   "S2A_20201121T235251_028298",
+   "S2A_20201125T000241_028341",
+   "S2B_20201126T235249_019461",
+   "S2B_20201130T000239_019504",
+   "S2A_20201201T235241_028441",
+   "S2A_20201205T000241_028484",
+   "S2B_20201210T000239_019647",
+   "S2A_20201215T000241_028627",
+   "S2B_20201216T235239_019747",
+   "S2B_20201220T000239_019790",
+   "S2A_20201221T235241_028727",
+   "S2A_20201225T000241_028770",
+   "S2B_20201226T235239_019890",
+   "S2A_20201231T235251_028870"
+  ],
+  "masks": {
+   "clear_scene_classes": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "buffered_scene_classes": [
+    3,
+    8,
+    9,
+    10
+   ],
+   "buffer_pixels": 2
+  },
+  "index_limits": {
+   "minimum_reflectance": 0.0,
+   "maximum_reflectance": 1.0,
+   "minimum_denominator": 0.001
+  },
+  "formulas": {
+   "ndvi": [
+    "nir",
+    "red"
+   ],
+   "ndbi": [
+    "swir1",
+    "nir"
+   ],
+   "mndwi": [
+    "green",
+    "swir1"
+   ]
+  },
+  "pixels_inside_boundary": 3438748,
+  "observation_count_percentiles_inside": {
+   "clear": {
+    "0": 5.0,
+    "1": 23.0,
+    "5": 29.0,
+    "25": 44.0,
+    "50": 66.0,
+    "75": 72.0,
+    "95": 83.0,
+    "100": 97.0
+   },
+   "ndvi": {
+    "0": 1.0,
+    "1": 20.0,
+    "5": 28.0,
+    "25": 41.0,
+    "50": 66.0,
+    "75": 72.0,
+    "95": 82.0,
+    "100": 97.0
+   },
+   "ndbi": {
+    "0": 2.0,
+    "1": 20.0,
+    "5": 28.0,
+    "25": 42.0,
+    "50": 66.0,
+    "75": 72.0,
+    "95": 82.0,
+    "100": 97.0
+   },
+   "mndwi": {
+    "0": 2.0,
+    "1": 23.0,
+    "5": 29.0,
+    "25": 44.0,
+    "50": 66.0,
+    "75": 72.0,
+    "95": 83.0,
+    "100": 97.0
+   }
+  },
+  "pixels_below_minimum_observations": {
+   "clear": 0,
+   "ndvi": 62,
+   "ndbi": 41,
+   "mndwi": 3
+  },
+  "minimum_valid_observations": 5,
+  "outputs": [
+   "work/2020/composite/index_medians.tif",
+   "work/2020/composite/observation_counts.tif",
+   "work/2020/composite/boundary_mask.tif"
+  ],
+  "seconds": 169.2
+ },
+ "classify": {
+  "completed": "2026-11-08T12:55:47+00:00",
+  "rule_limits": {
+   "water_at_least": 0.30000000000000004,
+   "not_water_at_most": 0.1,
+   "vegetation_at_least": 0.65,
+   "not_vegetation_at_most": 0.5499999999999999,
+   "artificial_ndbi_at_least": -0.15,
+   "bare_or_sand_ndbi_from": 0.0,
+   "bare_or_sand_ndbi_below": 0.15
+  },
+  "thresholds": {
+   "water_mndwi": 0.2,
+   "water_margin": 0.1,
+   "vegetation_ndvi": 0.6,
+   "vegetation_margin": 0.05,
+   "artificial_ndbi_minimum": -0.15,
+   "bare_or_sand_ndbi_range": [
+    0.0,
+    0.15
+   ]
+  },
+  "classes": {
+   "no_data": 0,
+   "vegetation": 1,
+   "water": 2,
+   "candidate_artificial": 3,
+   "uncertain_other": 4,
+   "insufficient_observations": 5
+  },
+  "precedence": [
+   "no_data: outside the study boundary",
+   "insufficient_observations: any index has fewer valid observations than the minimum",
+   "water: MNDWI >= water_at_least",
+   "vegetation: NDVI >= vegetation_at_least",
+   "candidate_artificial: NDVI <= not_vegetation_at_most, MNDWI <= not_water_at_most, NDBI >= artificial_ndbi_at_least and NDBI outside the bare-or-sand range",
+   "uncertain_other: every remaining assessable pixel"
+  ],
+  "pixel_counts": {
+   "no_data": 2543988,
+   "vegetation": 2093950,
+   "water": 184586,
+   "candidate_artificial": 487064,
+   "uncertain_other": 673086,
+   "insufficient_observations": 62
+  },
+  "area_km2": {
+   "no_data": 1017.6,
+   "vegetation": 837.58,
+   "water": 73.83,
+   "candidate_artificial": 194.83,
+   "uncertain_other": 269.23,
+   "insufficient_observations": 0.02
+  },
+  "output": "work/2020/classification/index_rule_classes.tif",
+  "seconds": 1.1
+ },
+ "verify": {
+  "completed": "2026-11-08T12:56:13+00:00",
+  "output": "analysis/results/2020/verification.json",
+  "boundary_mask": {
+   "polygon_area_in_grid_crs_km2": 1375.5,
+   "masked_pixel_area_km2": 1375.5,
+   "relative_difference": 0.0
+  },
+  "valid_data": {
+   "all_finite_values_within_minus_one_to_one": true,
+   "no_values_outside_boundary": true,
+   "nan_exactly_where_index_count_is_zero": true,
+   "index_counts_never_exceed_clear_count": true,
+   "outside_boundary_is_class_no_data": true,
+   "low_count_pixels_are_insufficient": true
+  },
+  "sample_recomputation_all_match": true
+ },
+ "export": {
+  "completed": "2026-11-08T12:56:23+00:00",
+  "output": "public/data/sentinel2-2020",
+  "zooms": [
+   8,
+   13
+  ],
+  "layers": {
+   "classes": {
+    "tiles": 218,
+    "bytes": 899166,
+    "largest_tile_bytes": 13302,
+    "resampling_by_zoom": {
+     "8": {
+      "method": "mode",
+      "ground_metres_per_pixel": 540.0
+     },
+     "9": {
+      "method": "mode",
+      "ground_metres_per_pixel": 270.0
+     },
+     "10": {
+      "method": "mode",
+      "ground_metres_per_pixel": 135.0
+     },
+     "11": {
+      "method": "mode",
+      "ground_metres_per_pixel": 67.5
+     },
+     "12": {
+      "method": "mode",
+      "ground_metres_per_pixel": 33.8
+     },
+     "13": {
+      "method": "nearest",
+      "ground_metres_per_pixel": 16.9
+     }
+    }
+   },
+   "ndvi": {
+    "tiles": 218,
+    "bytes": 4047986,
+    "largest_tile_bytes": 50891,
+    "resampling_by_zoom": {
+     "8": {
+      "method": "average",
+      "ground_metres_per_pixel": 540.0
+     },
+     "9": {
+      "method": "average",
+      "ground_metres_per_pixel": 270.0
+     },
+     "10": {
+      "method": "average",
+      "ground_metres_per_pixel": 135.0
+     },
+     "11": {
+      "method": "average",
+      "ground_metres_per_pixel": 67.5
+     },
+     "12": {
+      "method": "average",
+      "ground_metres_per_pixel": 33.8
+     },
+     "13": {
+      "method": "bilinear",
+      "ground_metres_per_pixel": 16.9
+     }
+    }
+   },
+   "ndbi": {
+    "tiles": 218,
+    "bytes": 4535583,
+    "largest_tile_bytes": 50404,
+    "resampling_by_zoom": {
+     "8": {
+      "method": "average",
+      "ground_metres_per_pixel": 540.0
+     },
+     "9": {
+      "method": "average",
+      "ground_metres_per_pixel": 270.0
+     },
+     "10": {
+      "method": "average",
+      "ground_metres_per_pixel": 135.0
+     },
+     "11": {
+      "method": "average",
+      "ground_metres_per_pixel": 67.5
+     },
+     "12": {
+      "method": "average",
+      "ground_metres_per_pixel": 33.8
+     },
+     "13": {
+      "method": "bilinear",
+      "ground_metres_per_pixel": 16.9
+     }
+    }
+   },
+   "mndwi": {
+    "tiles": 218,
+    "bytes": 3625270,
+    "largest_tile_bytes": 44828,
+    "resampling_by_zoom": {
+     "8": {
+      "method": "average",
+      "ground_metres_per_pixel": 540.0
+     },
+     "9": {
+      "method": "average",
+      "ground_metres_per_pixel": 270.0
+     },
+     "10": {
+      "method": "average",
+      "ground_metres_per_pixel": 135.0
+     },
+     "11": {
+      "method": "average",
+      "ground_metres_per_pixel": 67.5
+     },
+     "12": {
+      "method": "average",
+      "ground_metres_per_pixel": 33.8
+     },
+     "13": {
+      "method": "bilinear",
+      "ground_metres_per_pixel": 16.9
+     }
+    }
+   }
+  },
+  "total_bytes": 13110746,
+  "total_files": 873,
+  "seconds": 9.8
+ }
+}

@@ -24,9 +24,12 @@ import { addBoundaryOutline } from '../map/boundaryOutline.ts'
 import { defaultLandCoverYear, type LandCoverYear } from '../map/deaLandCover.ts'
 import { getRegionalFramingOptions } from '../map/regionalFraming.ts'
 import {
+  defaultSentinelYear,
   loadSentinelIndexMetadata,
-  type SentinelIndexMetadata,
+  sentinelYears,
+  type SentinelMetadataByYear,
   type SentinelView,
+  type SentinelYear,
 } from '../map/sentinelIndexLayers.ts'
 import {
   hideTerrainShading,
@@ -56,14 +59,16 @@ const defaultAnalysisSelection: AnalysisSelection = {
   isEnabled: true,
   source: 'dea',
   deaYear: defaultLandCoverYear,
+  sentinelYear: defaultSentinelYear,
   sentinelView: 'classes',
 }
 
-function selectedLayerDefinition(selection: AnalysisSelection, sentinelMetadata: SentinelIndexMetadata | null) {
+function selectedLayerDefinition(selection: AnalysisSelection, sentinelMetadata: SentinelMetadataByYear) {
   if (selection.source === 'dea') {
     return deaLayerDefinition(selection.deaYear)
   }
-  return sentinelMetadata ? sentinelLayerDefinition(sentinelMetadata, selection.sentinelView) : null
+  const metadata = sentinelMetadata[selection.sentinelYear]
+  return metadata ? sentinelLayerDefinition(metadata, selection.sentinelYear, selection.sentinelView) : null
 }
 
 export function GoldCoastMap() {
@@ -83,23 +88,28 @@ export function GoldCoastMap() {
     status: 'loading',
   })
   const [zoomLevel, setZoomLevel] = useState(0)
-  const [sentinelMetadata, setSentinelMetadata] = useState<SentinelIndexMetadata | null>(null)
+  const [sentinelMetadata, setSentinelMetadata] = useState<SentinelMetadataByYear>({})
   const [sentinelMetadataStatus, setSentinelMetadataStatus] = useState<SentinelMetadataStatus>('loading')
 
   useEffect(() => {
     const metadataRequest = new AbortController()
-    loadSentinelIndexMetadata(metadataRequest.signal)
-      .then((metadata) => {
-        setSentinelMetadata(metadata)
-        setSentinelMetadataStatus('ready')
-      })
-      .catch((error: unknown) => {
+    Promise.allSettled(sentinelYears.map((year) => loadSentinelIndexMetadata(year, metadataRequest.signal))).then(
+      (results) => {
         if (metadataRequest.signal.aborted) {
           return
         }
-        console.error(error)
-        setSentinelMetadataStatus('unavailable')
-      })
+        const loadedMetadata: SentinelMetadataByYear = {}
+        results.forEach((result, position) => {
+          if (result.status === 'fulfilled') {
+            loadedMetadata[sentinelYears[position]] = result.value
+          } else {
+            console.error(result.reason)
+          }
+        })
+        setSentinelMetadata(loadedMetadata)
+        setSentinelMetadataStatus(Object.keys(loadedMetadata).length > 0 ? 'ready' : 'unavailable')
+      },
+    )
     return () => metadataRequest.abort()
   }, [])
 
@@ -267,6 +277,12 @@ export function GoldCoastMap() {
     }
   }
 
+  const selectSentinelYear = (sentinelYear: SentinelYear) => {
+    if (sentinelYear !== analysisSelection.sentinelYear) {
+      applyAnalysisSelection({ ...analysisSelection, sentinelYear })
+    }
+  }
+
   const selectSentinelView = (sentinelView: SentinelView) => {
     if (sentinelView !== analysisSelection.sentinelView) {
       applyAnalysisSelection({ ...analysisSelection, sentinelView })
@@ -351,6 +367,7 @@ export function GoldCoastMap() {
           onToggle={toggleAnalysisLayer}
           onSelectSource={selectAnalysisSource}
           onSelectDeaYear={selectDeaYear}
+          onSelectSentinelYear={selectSentinelYear}
           onSelectSentinelView={selectSentinelView}
           onChangeOpacity={changeAnalysisOpacity}
           onToggleDisplaySmoothing={toggleDisplaySmoothing}

@@ -1,27 +1,87 @@
 # Sentinel-2 spectral-index analysis
 
-This project computes its own 2025 NDVI, NDBI and MNDWI composites and a simple index-rule classification for the whole City of Gold Coast. The aim is to check whether a transparent index method picks out developed areas, such as the streets of Arundel, that DEA Land Cover maps as vegetation. The outputs are this project's own analysis. They are not DEA classes, and the app labels them as such.
+This project computes its own NDVI, NDBI and MNDWI composites and a simple index-rule classification for the whole City of Gold Coast, for 2020 and 2025. The aim is to check whether a transparent index method picks out developed areas, such as the streets of Arundel, that DEA Land Cover maps as vegetation. The outputs are this project's own analysis. They are not DEA classes, and the app labels them as such.
 
 - **Processing:** Python in [`analysis/`](../analysis). Settings and thresholds are in [`analysis/config.toml`](../analysis/config.toml).
-- **Records:** every run writes a processing manifest to [`analysis/results/processing_manifest.json`](../analysis/results/processing_manifest.json).
-- **Web outputs:** static PNG tiles and `layers.json` in [`public/data/sentinel2-2025/`](../public/data/sentinel2-2025).
+- **Records:** every run writes a processing manifest per year, for example [`analysis/results/2025/processing_manifest.json`](../analysis/results/2025/processing_manifest.json) and [`analysis/results/2020/processing_manifest.json`](../analysis/results/2020/processing_manifest.json).
+- **Web outputs:** static PNG tiles and `layers.json` per year in [`public/data/sentinel2-2025/`](../public/data/sentinel2-2025) and [`public/data/sentinel2-2020/`](../public/data/sentinel2-2020).
 
-All facts below were checked on 4–5 November 2026.
+The 2025 facts below were checked on 4–5 November 2026, and the 2020 and 2015 facts on 8 November 2026. Unless a section says otherwise, it describes 2025, and 2020 was processed the same way.
+
+## Years
+
+| Year | Status | Source | Acquisitions used | Actual period | Clear observations per pixel (median, 1st percentile) |
+| --- | --- | --- | --- | --- | --- |
+| 2025 | In the app | Earth Search Collection 1, baseline 05.11, Sentinel-2A, 2B and 2C | 144 of 172 | 3 Jan – 31 Dec 2025 | 78, 32 |
+| 2020 | In the app | Earth Search Collection 1, baseline 05.00, Sentinel-2A and 2B | 125 of 143 | 1 Jan – 31 Dec 2020 | 66, 23 |
+| 2015 | Not added | See *2015* below | 10 at most | 29 Sep – 28 Dec 2015 | 2, 0 |
+
+### 2020
+
+`python -m spectral_indices --year 2020 all` reused everything from 2025 unchanged: the 20 m grid, boundary mask, SCL masks and cloud buffer, index formulas, compositing method, minimum of 5 observations and classification thresholds. Before processing, `plan` confirmed that 2020 is compatible:
+
+- **Items:** 285 items from the same two MGRS tiles, grouped into 143 acquisitions, on the same two relative orbits (R030 and R130). One acquisition was published for one tile only.
+- **Product:** all items are Collection 1 Level-2A, processing baseline 05.00, from the same reprocessing campaign as 2025's 05.11. Sentinel-2C did not exist yet, so there are fewer acquisitions.
+- **Bands and scaling:** the same assets (`green`, `red`, `nir08`, `swir16`, `scl`), the same native resolutions, and the same `scale 0.0001, offset −0.1` on every reflectance band.
+- **10 m bands:** the COGs carry the same AVERAGE overview on the same 20 m lattice (origin 499980/6900040).
+- **Grid:** identical to 2025, including the tile split at row 2098.
+- **Quality layer:** SCL with no-data 0 and the same class meanings.
+
+Results:
+- **Download:** 18 acquisitions had less than 1% clear pixels and were skipped, and 125 were stored. Reading took about 40 minutes and 5.52 GB, and the cache is 3.8 GB.
+- **Coverage:** clear observations per pixel range from 5 to 97 (median 66), and 62 pixels (0.02 km²) are below the minimum for at least one index.
+- **Checks:** `verify` passed every check (see *Verification*).
+- **Not re-assessed:** the 2025 reference labels describe 2025 imagery, so `calibrate` and `assess` run only for 2025. The 2020 classes use the 2025 thresholds without a separate accuracy check.
+
+### 2015
+
+2015 was checked and not added as a regional layer. Two separate problems stop it.
+
+**Access.**
+- **Earth Search:** its Collection 1 catalogue (`sentinel-2-c1-l2a`) returns no items over the study area for 2015 or 2016.
+- **Copernicus Data Space:** the STAC catalogue (`https://stac.dataspace.copernicus.eu/v1`, collection `sentinel-2-l2a`) returns 20 items for 2015. They are Collection 1, baseline 05.00, from both MGRS tiles, and form 10 acquisitions from 29 September to 28 December 2015.
+  - **Credentials:** every asset is marked as needing either S3 keys or an OpenID Connect token. An anonymous HTTPS download returned HTTP 401, and the S3 endpoint returned HTTP 403.
+  - **What it would take:** a free Copernicus Data Space account, whose credentials this project does not have.
+  - **Asset layout:** the assets are JPEG 2000 files inside SAFE products (`B03_10m`, `B04_10m`, `B8A_20m`, `B11_20m`, `SCL_20m`) with `raster:scale 0.0001, raster:offset −0.1`, not cloud-optimised GeoTIFFs.
+- **Microsoft Planetary Computer:** this free catalogue needs no account and lists the same 10 acquisitions for 2015, but from older processing baselines (02.12 and 03.00), not Collection 1.
+
+**Coverage.** Sentinel-2A was the only satellite in orbit in 2015 and began routine imaging in late 2015, so there are only 10 acquisitions over the Gold Coast. The SCL layers of all 10 were read from Planetary Computer onto this project's grid and boundary, with this project's mask (SCL 4–7, 40 m buffer around cloud and shadow). This was a one-off check, not a pipeline stage.
+
+| Date | Relative orbit | Observed inside the boundary | Clear inside the boundary |
+| --- | --- | --- | --- |
+| 2015-09-29 | R130 | 62% | 54% |
+| 2015-10-19 | R130 | 100% | 13% |
+| 2015-10-23 | R030 | 69% | 37% |
+| 2015-11-12 | R030 | 78% | 8% |
+| 2015-11-22 | R030 | 57% | 1% |
+| 2015-11-28 | R130 | 61% | 20% |
+| 2015-12-08 | R130 | 64% | 16% |
+| 2015-12-18 | R130 | 100% | 52% |
+| 2015-12-22 | R030 | 52% | 4% |
+| 2015-12-28 | R130 | 62% | 31% |
+
+- **Per pixel:** the median pixel inside the boundary has 2 clear observations, and the best pixel has 8.
+- **Against the minimum:** only 11% of pixels reach the minimum of 5. With the minimum kept, 89% of the city would be "Insufficient observations", in a composite covering only spring and early summer.
+- **Different SCL processing:** Planetary Computer's older scene classification differs in detail from Collection 1. But no cloud mask can raise any pixel above 10 observations, and most dates are largely cloudy.
+
+**Possible next steps,** if an earlier Sentinel-2 year is wanted:
+- **2016:** Planetary Computer lists 125 items (about 62 acquisitions) for the study area.
+- **Collection 1 for 2015 or 2016:** a Copernicus Data Space account would give access, at the cost of reading JPEG 2000 files.
 
 ## Imagery source and access
 
 | Item | Value |
 | --- | --- |
-| Product | Sentinel-2 Level-2A surface reflectance, Collection 1 (ESA processing baseline 05.11 for every 2025 item) |
+| Product | Sentinel-2 Level-2A surface reflectance, Collection 1 (ESA processing baseline 05.11 for every 2025 item, 05.00 for every 2020 item) |
 | Catalogue | Element 84 Earth Search STAC API, `https://earth-search.aws.element84.com/v1`, collection `sentinel-2-c1-l2a` |
 | Files | Cloud-optimised GeoTIFFs in the public bucket `e84-earth-search-sentinel-data` (AWS us-west-2), `requester_pays: false` |
 | Access | Anonymous HTTPS. No account, API key, token or paid service |
-| Licence | Copernicus Sentinel data legal notice (free, full and open). Required credit: "Contains modified Copernicus Sentinel data 2025" |
+| Licence | Copernicus Sentinel data legal notice (free, full and open). Required credit: "Contains modified Copernicus Sentinel data 2025", or 2020 for that year |
 | Citation | `https://doi.org/10.5270/S2_-742ikth` (the collection's `cite-as` link) |
 
 Alternatives that were not chosen:
 - **Microsoft Planetary Computer** needs a signed token for every request.
-- **Copernicus Data Space** needs an account for downloads.
+- **Copernicus Data Space** needs an account for downloads (confirmed again for 2015, see *Years*).
 - **DEA's own Sentinel-2 product** is a different surface reflectance product (ARD), not ESA Level-2A.
 
 ### What the search found
@@ -186,7 +246,7 @@ The thresholds come only from the 32 calibration samples (table below), placed a
   - **Cross-check:** each label was compared with the Queensland Government 2022 10 cm aerial capture (`Gold_Coast_LGA_2022_10cm_SISP`, 24 July to 12 September 2022). Changes since 2022 are noted, such as earthworks or moving sandbanks.
   - **Limits:** one interpreter labelled every sample, and none is field-verified. Each label has a confidence of high, medium or low.
   - **Rule for a single class:** a class is given only when it covers roughly 60% or more of the cell. Otherwise the cell is "mixed".
-- **Dates.** The dates per sample are in [`analysis/results/reference_imagery_dates.csv`](../analysis/results/reference_imagery_dates.csv). The chips are kept in `analysis/work/reference_chips/` for review only and are not published.
+- **Dates.** The dates per sample are in [`analysis/results/2025/reference_imagery_dates.csv`](../analysis/results/2025/reference_imagery_dates.csv). The chips are kept in `analysis/work/2025/reference_chips/` for review only and are not published.
 - **Strata.** Residential, Arundel, industrial and commercial, dense vegetation, beach, construction and bare, water, and mixed coastal.
 - **Separate locations.** Calibration and assessment samples are in different suburbs and features. For example, industrial calibration is at Yatala, West Burleigh and Currumbin Waters, while industrial assessment is in Arundel and Molendinar.
 - **Placement.**
@@ -257,7 +317,7 @@ DEA labels the four developed street cells as (Semi-)Natural Terrestrial Vegetat
 
 ### Full sample table
 
-The authoritative table, with all columns, is [`analysis/results/sample_assessment.csv`](../analysis/results/sample_assessment.csv). It includes cell centres, grid row and column, per-index observation counts, DEA 2010 and 2025 values, and agreement flags. Rerunning `assess` regenerates it. DEA abbreviations used below: CTV Cultivated Terrestrial Vegetation, NTV (Semi-)Natural Terrestrial Vegetation, NAV Natural Aquatic Vegetation.
+The authoritative table, with all columns, is [`analysis/results/2025/sample_assessment.csv`](../analysis/results/2025/sample_assessment.csv). It includes cell centres, grid row and column, per-index observation counts, DEA 2010 and 2025 values, and agreement flags. Rerunning `assess` regenerates it. DEA abbreviations used below: CTV Cultivated Terrestrial Vegetation, NTV (Semi-)Natural Terrestrial Vegetation, NAV Natural Aquatic Vegetation.
 
 #### Assessment samples
 
@@ -346,7 +406,7 @@ The authoritative table, with all columns, is [`analysis/results/sample_assessme
 
 ## Verification
 
-`verify` writes [`analysis/results/verification.json`](../analysis/results/verification.json). All checks passed:
+`verify` writes `analysis/results/{year}/verification.json` ([2025](../analysis/results/2025/verification.json), [2020](../analysis/results/2020/verification.json)). All checks passed for both years:
 
 - **Grid alignment:** the grid origin is a multiple of 20 m. For one acquisition, a full grid row of B04 (read through the overview) and of B8A was read directly from the source COG; both rows are identical to the cached rows.
 - **Boundary masking:** the masked area equals the polygon's area (1,375.50 km²). All pixels outside the boundary have no values, zero counts and class no-data.
@@ -356,22 +416,24 @@ The authoritative table, with all columns, is [`analysis/results/sample_assessme
   - No index count exceeds the clear count.
   - Every low-count pixel inside the boundary is "Insufficient observations".
 - **Formulas, median and classes:** for every sixth sample (13 samples), a plain-Python recomputation from the raw cache matched the pipeline exactly: masks with the cloud buffer, scale and offset, formulas, invalid-value rules, median, counts and the rule's class.
-- **In the browser** (these checks predate the Smooth display switch and match its "off" state):
+- **In the browser** (2025, made before the Smooth display switch existed, with the same nearest-neighbour drawing the Classes view now always uses):
   - Twelve sample cells drew exactly their exported class colour on screen at zoom 15.
   - Class tiles contained only the five class colours at zooms 9.6, 11.4 and 12.7.
   - NDVI pixels drew within a colour distance of 0–12 of their expected ramp colour.
 
 ## Web outputs
 
-| Layer | Tiles | Size | Rendering |
-| --- | --- | --- | --- |
-| Classes | 218 | 0.85 MB | 8-bit palette PNG, class value = palette index |
-| NDVI | 218 | 3.90 MB | 8-bit palette PNG, 100 colour steps over −0.2…0.9 |
-| NDBI | 218 | 4.45 MB | 8-bit palette PNG, 100 colour steps over −0.6…0.3 |
-| MNDWI | 218 | 3.69 MB | 8-bit palette PNG, 100 colour steps over −0.8…0.8 |
-| `layers.json` | 1 | 2 KB | Legends, ranges, period, resolution and source text for the app |
+| Layer | Tiles per year | 2025 size | 2020 size | Rendering |
+| --- | --- | --- | --- | --- |
+| Classes | 218 | 0.85 MB | 0.90 MB | 8-bit palette PNG, class value = palette index |
+| NDVI | 218 | 3.90 MB | 4.05 MB | 8-bit palette PNG, 100 colour steps over −0.2…0.9 |
+| NDBI | 218 | 4.45 MB | 4.54 MB | 8-bit palette PNG, 100 colour steps over −0.6…0.3 |
+| MNDWI | 218 | 3.69 MB | 3.63 MB | 8-bit palette PNG, 100 colour steps over −0.8…0.8 |
+| `layers.json` | 1 | 2 KB | 2 KB | Legends, ranges, period, resolution and source text for the app |
 
-That is 873 files and 12.9 MB in total. The largest tile is 51 KB.
+That is 873 files per year: 12.9 MB for 2025 and 13.1 MB for 2020. The largest tile is 51 KB. Both years use the same colour ranges, so equal colours mean equal index values.
+
+The tile writer is shared with the clipped DEA tiles ([land-cover.md](land-cover.md#clipping-and-tiling)). After it was split out, re-exporting 2025 from its existing composites gave 872 tiles byte-identical to the published ones.
 
 **Zooms and coverage.**
 - **Range:** zooms 8–13. Zoom 13 tiles are about 16.9 m per pixel at this latitude, just finer than the 20 m data. Beyond zoom 13, the app enlarges zoom-13 tiles. Below zoom 8, the layers are hidden and the panel says "Zoom in to see this layer."
@@ -387,12 +449,17 @@ That is 873 files and 12.9 MB in total. The largest tile is 51 KB.
 Index values are binned into 100 steps after resampling. No-data and below-minimum pixels are fully transparent (palette index 0).
 
 **In the browser.**
-- **Smooth display** applies to all four views and the DEA layers alike. When on (the default), tiles are drawn with linear sampling, which blends neighbouring pixel colours on screen. When off, they are drawn with nearest-neighbour sampling, so every pixel shows its exported colour. Blended colours are a display effect only: the tiles, class values and index values are unchanged. See [land-cover.md](land-cover.md#smooth-display-and-exact-class-colours) for the settings and measurements.
-- **Tile zoom:** every analysis source uses floor tile zoom and no anisotropic filtering, so the "off" state is exact at any zoom and after tilting. The index views gained floor zoom in this change; between whole zooms below 13 they now use tiles up to one level coarser than before.
+- **Fixed rendering, no Smooth display switch.** The Sentinel-2 views do not show the switch and do not follow the DEA setting:
+  - **Classes:** always nearest neighbour, so every pixel shows its exact class colour and no blend can look like another class.
+  - **NDVI, NDBI and MNDWI:** always linear, so neighbouring values blend on screen into a continuous surface. Blended colours are a display effect only; the tiles and index values are unchanged.
+- **Tile zoom:** every analysis source uses floor tile zoom and no anisotropic filtering, so the Classes view stays exact at any zoom and after tilting (see [land-cover.md](land-cover.md#smooth-display-and-exact-class-colours)).
+- **Years and views.** Each year and view has its own source and layer, with keys such as `sentinel-2020-ndvi`. The app loads both years' small `layers.json` files at startup, and a year's tiles only when that year and view are shown. A late tile from one year can only be drawn by that year's own layer, which is hidden once another year is selected.
+  - **Held-response test:** 2020 MNDWI tile responses were held back, the year was switched to 2025, and the held tiles were then released as solid magenta. No magenta pixel appeared while 2025 was selected; the same tiles appeared once 2020 was selected again. Seven rapid year clicks, and a burst of view and year clicks, each ended with only the last selection visible.
+- **Caption and source note.** The caption gives the year and the dates of the first and last acquisitions used, for example "NDVI 2020 · median of 1 Jan – 31 Dec 2020 · 20 m pixels". The source note gives the number of acquisitions, and the attribution credits that year's Copernicus data.
 - **Classes** also use no fade, so a tile never cross-fades with its parent.
 - **Placement:** every analysis layer has a style-level `minzoom`, and sits below the Gold Coast outline and labels.
 
-The tiles are static files, so the app is compatible with GitHub Pages. A production build with base path `/goldcoast_remotesensing/` loaded the boundary, `layers.json`, the tiles and the MapLibre worker from that subpath, with no requests outside it.
+The tiles are static files, so the app is compatible with GitHub Pages. A production build with base path `/goldcoast_remotesensing/` loaded the boundary, both years' `layers.json`, the tiles and the MapLibre worker from that subpath, with no requests outside it.
 
 ## Reproducing the pipeline (PowerShell)
 
@@ -403,24 +470,28 @@ python -m venv analysis\.venv
 analysis\.venv\Scripts\python.exe -m pip install --upgrade "pip>=26.2"
 analysis\.venv\Scripts\python.exe -m pip install -r analysis\requirements.txt
 cd analysis
-.venv\Scripts\python.exe -m spectral_indices plan
-.venv\Scripts\python.exe -m spectral_indices acquire
-.venv\Scripts\python.exe -m spectral_indices composite
-.venv\Scripts\python.exe -m spectral_indices calibrate
-.venv\Scripts\python.exe -m spectral_indices classify
-.venv\Scripts\python.exe -m spectral_indices verify
-.venv\Scripts\python.exe -m spectral_indices export
-.venv\Scripts\python.exe -m spectral_indices assess
-.venv\Scripts\python.exe -m spectral_indices reference-chips
+.venv\Scripts\python.exe -m spectral_indices --year 2025 plan
+.venv\Scripts\python.exe -m spectral_indices --year 2025 acquire
+.venv\Scripts\python.exe -m spectral_indices --year 2025 composite
+.venv\Scripts\python.exe -m spectral_indices --year 2025 calibrate
+.venv\Scripts\python.exe -m spectral_indices --year 2025 classify
+.venv\Scripts\python.exe -m spectral_indices --year 2025 verify
+.venv\Scripts\python.exe -m spectral_indices --year 2025 export
+.venv\Scripts\python.exe -m spectral_indices --year 2025 assess
+.venv\Scripts\python.exe -m spectral_indices --year 2025 reference-chips
+.venv\Scripts\python.exe -m spectral_indices --year 2020 all
+.venv\Scripts\python.exe -m spectral_indices dea-tiles dea-verify
 ```
 
 **Stages.**
-- **Reruns:** each stage reads the previous stage's files from `analysis/work/`, so a failed stage can be rerun on its own.
+- **Years:** every Sentinel-2 stage needs `--year`, which must be one of `years` in `[imagery]` (2020 and 2025). The period is 1 January to 31 December of that year. Each year keeps its own cache in `analysis/work/{year}/`, records in `analysis/results/{year}/` and tiles in `public/data/sentinel2-{year}/`.
+- **Reruns:** each stage reads the previous stage's files from that year's work folder, so a failed stage can be rerun on its own.
 - **`acquire` resumes:** it skips any acquisition that already has a status file. A complete rerun takes about 2 s.
-- **`all`:** runs `plan` to `assess` in order.
-- **`reference-chips`:** optional. It refreshes the review images and the imagery dates.
+- **`all`:** runs `plan` to `assess` in order. For years other than 2025 it leaves out `calibrate` and `assess`, which need the 2025 reference labels; asking for them explicitly stops with a message.
+- **`reference-chips`:** optional, 2025 only. It refreshes the review images and the imagery dates.
+- **`dea-tiles` and `dea-verify`:** build and check the clipped DEA land cover tiles for every year in `[dea_land_cover]`. They take no `--year`. See [land-cover.md](land-cover.md#clipping-and-tiling).
 
-The environment was tested with Python 3.13.14 on Windows 10. Reading 6.4 GB takes roughly 45 minutes at 2 MB/s, and the later stages take about 5 minutes.
+The environment was tested with Python 3.13.14 on Windows 10. Reading 5.5–6.4 GB takes roughly 40–45 minutes at 2 MB/s, and the later stages take about 5 minutes per year.
 
 ## Files
 
@@ -430,9 +501,10 @@ The environment was tested with Python 3.13.14 on Windows 10. Reading 6.4 GB tak
 | `analysis/config.toml` | Yes | Source, grid, masks, index limits, compositing, thresholds, web styling |
 | `analysis/spectral_indices/` | Yes | The pipeline |
 | `analysis/samples.csv` | Yes | Sample locations and reference labels |
-| `analysis/results/` | Yes | Processing manifest, verification, calibration and assessment tables, reference imagery dates |
-| `public/data/sentinel2-2025/` | Yes | Browser tiles and `layers.json` |
-| `analysis/work/` | No | STAC items, plan, 4.4 GB acquisition cache, composites, classification, reference chips |
+| `analysis/results/2025/` | Yes | Processing manifest, verification, calibration and assessment tables, reference imagery dates |
+| `analysis/results/2020/` | Yes | Processing manifest and verification |
+| `public/data/sentinel2-2025/`, `public/data/sentinel2-2020/` | Yes | Browser tiles and `layers.json` |
+| `analysis/work/{year}/` | No | STAC items, plan, acquisition cache (4.4 GB for 2025, 3.8 GB for 2020), composites, classification, reference chips (2025) |
 | `analysis/.venv/` | No | Python environment |
 
 ## Limitations
@@ -442,6 +514,9 @@ The environment was tested with Python 3.13.14 on Windows 10. Reading 6.4 GB tak
 - **Annual medians blur change:** a site that changed during 2025 gets a median of its before and after states (A35).
 - **Mixed cells:** most of a leafy suburb's 20 m cells mix roof, road and canopy. Neither the rule nor DEA (30 m) assigns them one class reliably.
 - **Thresholds:** they come from 32 calibration samples, 4 of them bare/sand inside the boundary, so they may not transfer elsewhere or to other years.
+- **2020 is not assessed:** it uses the 2025 thresholds unchanged, and no reference labels exist for 2020. Its classes have not had an accuracy check of their own.
+- **Comparing years:** 2020 had two satellites and baseline 05.00, and 2025 three satellites and baseline 05.11. The median pixel therefore has fewer observations in 2020 (66 against 78). Weather, tides and season mix also differ between the years, so a change in an index or class between them is not by itself evidence of a change on the ground.
+- **No 2015 layer:** see *Years*.
 - **Assessment:**
   - It is small (29 scored samples).
   - All labels come from one interpreter, and none is field-checked.

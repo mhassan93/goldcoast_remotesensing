@@ -1,0 +1,1726 @@
+{
+ "sample_size_per_zoom": 20000,
+ "years": {
+  "2010": {
+   "zooms": {
+    "7": {
+     "tile_pixels": 65536,
+     "opaque_pixels": 1183,
+     "opaque_pixels_not_touching_boundary": 0,
+     "sampled_pixels": 20000,
+     "sampled_outside_but_opaque": 0,
+     "sampled_inside_but_transparent": 0,
+     "palette_problems": [],
+     "values_present": [
+      111,
+      112,
+      124,
+      215,
+      220
+     ]
+    },
+    "8": {
+     "tile_pixels": 131072,
+     "opaque_pixels": 4732,
+     "opaque_pixels_not_touching_boundary": 0,
+     "sampled_pixels": 20000,
+     "sampled_outside_but_opaque": 0,
+     "sampled_inside_but_transparent": 0,
+     "palette_problems": [],
+     "values_present": [
+      111,
+      112,
+      124,
+      215,
+      216,
+      220
+     ]
+    },
+    "9": {
+     "tile_pixels": 131072,
+     "opaque_pixels": 18944,
+     "opaque_pixels_not_touching_boundary": 0,
+     "sampled_pixels": 20000,
+     "sampled_outside_but_opaque": 0,
+     "sampled_inside_but_transparent": 0,
+     "palette_problems": [],
+     "values_present": [
+      111,
+      112,
+      124,
+      215,
+      216,
+      220
+     ]
+    },
+    "10": {
+     "tile_pixels": 262144,
+     "opaque_pixels": 75821,
+     "opaque_pixels_not_touching_boundary": 0,
+     "sampled_pixels": 20000,
+     "sampled_outside_but_opaque": 0,
+     "sampled_inside_but_transparent": 0,
+     "palette_problems": [],
+     "values_present": [
+      111,
+      112,
+      124,
+      215,
+      216,
+      220
+     ]
+    },
+    "11": {
+     "tile_pixels": 786432,
+     "opaque_pixels": 303236,
+     "opaque_pixels_not_touching_boundary": 0,
+     "sampled_pixels": 20000,
+     "sampled_outside_but_opaque": 0,
+     "sampled_inside_but_transparent": 0,
+     "palette_problems": [],
+     "values_present": [
+      111,
+      112,
+      124,
+      215,
+      216,
+      220
+     ]
+    },
+    "12": {
+     "tile_pixels": 3145728,
+     "opaque_pixels": 1212712,
+     "opaque_pixels_not_touching_boundary": 0,
+     "sampled_pixels": 20000,
+     "sampled_outside_but_opaque": 0,
+     "sampled_inside_but_transparent": 3,
+     "palette_problems": [],
+     "values_present": [
+      111,
+      112,
+      124,
+      215,
+      216,
+      220
+     ]
+    },
+    "13": {
+     "tile_pixels": 9830400,
+     "opaque_pixels": 4850077,
+     "opaque_pixels_not_touching_boundary": 0,
+     "sampled_pixels": 20000,
+     "sampled_outside_but_opaque": 0,
+     "sampled_inside_but_transparent": 2,
+     "palette_problems": [],
+     "values_present": [
+      111,
+      112,
+      124,
+      215,
+      216,
+      220
+     ],
+     "interior_comparison": {
+      "opaque_pixels_compared": 4850077,
+      "match_source_class_at_pixel_centre": 0.997733,
+      "pixels_with_uniform_3x3_source": 3686034,
+      "match_where_source_3x3_uniform": 1.0,
+      "mismatches_where_source_3x3_uniform": 0,
+      "mismatches_with_class_from_source_3x3": 10994,
+      "mismatches_with_class_not_in_source_3x3": 0
+     },
+     "sampled_inside_but_transparent_with_source_no_data": 2
+    },
+    "14": {
+     "tile_pixels": 37355520,
+     "opaque_pixels": 19400189,
+     "opaque_pixels_not_touching_boundary": 0,
+     "sampled_pixels": 20000,
+     "sampled_outside_but_opaque": 0,
+     "sampled_inside_but_transparent": 3,
+     "palette_problems": [],
+     "values_present": [
+      111,
+      112,
+      124,
+      215,
+      216,
+      220
+     ],
+     "interior_comparison": {
+      "opaque_pixels_compared": 19400189,
+      "match_source_class_at_pixel_centre": 0.99795,
+      "pixels_with_uniform_3x3_source": 14743044,
+      "match_where_source_3x3_uniform": 1.0,
+      "mismatches_where_source_3x3_uniform": 0,
+      "mismatches_with_class_from_source_3x3": 39777,
+      "mismatches_with_class_not_in_source_3x3": 0
+     },
+     "sampled_inside_but_transparent_with_source_no_data": 3
+    }
+   },
+   "coastal_points": {
+    "Surfers Paradise, ocean 300 m off the beach": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": false,
+      "9": false,
+      "10": false,
+      "11": false,
+      "12": false,
+      "13": false,
+      "14": false
+     },
+     "tile_value": {
+      "7": 215,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0
+     }
+    },
+    "Surfers Paradise, beach sand east of the esplanade": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": false,
+      "9": true,
+      "10": false,
+      "11": false,
+      "12": false,
+      "13": false,
+      "14": false
+     },
+     "tile_value": {
+      "7": 215,
+      "8": 0,
+      "9": 215,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0
+     }
+    },
+    "Main Beach, ocean": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": false,
+      "9": false,
+      "10": false,
+      "11": false,
+      "12": false,
+      "13": false,
+      "14": false
+     },
+     "tile_value": {
+      "7": 112,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0
+     }
+    },
+    "Gold Coast Seaway": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+     },
+     "tile_value": {
+      "7": 112,
+      "8": 112,
+      "9": 112,
+      "10": 112,
+      "11": 112,
+      "12": 112,
+      "13": 112,
+      "14": 112
+     }
+    },
+    "South Stradbroke Island": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+     },
+     "tile_value": {
+      "7": 112,
+      "8": 112,
+      "9": 112,
+      "10": 112,
+      "11": 112,
+      "12": 112,
+      "13": 112,
+      "14": 112
+     }
+    },
+    "Broadwater": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+     },
+     "tile_value": {
+      "7": 220,
+      "8": 220,
+      "9": 220,
+      "10": 220,
+      "11": 220,
+      "12": 220,
+      "13": 220,
+      "14": 220
+     }
+    },
+    "Southern Moreton Bay near Jumpinpin": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+     },
+     "tile_value": {
+      "7": 220,
+      "8": 220,
+      "9": 220,
+      "10": 220,
+      "11": 220,
+      "12": 216,
+      "13": 216,
+      "14": 216
+     }
+    },
+    "Burleigh Heads, ocean": {
+     "inside_boundary_at_pixel_centre": {
+      "7": false,
+      "8": false,
+      "9": false,
+      "10": false,
+      "11": false,
+      "12": false,
+      "13": false,
+      "14": false
+     },
+     "tile_value": {
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0
+     }
+    },
+    "Coolangatta, ocean": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": false,
+      "9": true,
+      "10": false,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+     },
+     "tile_value": {
+      "7": 215,
+      "8": 0,
+      "9": 215,
+      "10": 0,
+      "11": 112,
+      "12": 112,
+      "13": 112,
+      "14": 112
+     }
+    },
+    "Tweed River, New South Wales": {
+     "inside_boundary_at_pixel_centre": {
+      "7": false,
+      "8": false,
+      "9": false,
+      "10": false,
+      "11": false,
+      "12": false,
+      "13": false,
+      "14": false
+     },
+     "tile_value": {
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0
+     }
+    },
+    "Hinze Dam": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+     },
+     "tile_value": {
+      "7": 112,
+      "8": 220,
+      "9": 111,
+      "10": 215,
+      "11": 112,
+      "12": 216,
+      "13": 216,
+      "14": 216
+     }
+    },
+    "Logan River at the northern boundary": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+     },
+     "tile_value": {
+      "7": 112,
+      "8": 112,
+      "9": 112,
+      "10": 112,
+      "11": 112,
+      "12": 112,
+      "13": 112,
+      "14": 112
+     }
+    }
+   },
+   "cached_window_matches_remote_mosaic": {
+    "points": 500,
+    "matching": 500
+   },
+   "coastal_points_consistent": true
+  },
+  "2015": {
+   "zooms": {
+    "7": {
+     "tile_pixels": 65536,
+     "opaque_pixels": 1183,
+     "opaque_pixels_not_touching_boundary": 0,
+     "sampled_pixels": 20000,
+     "sampled_outside_but_opaque": 0,
+     "sampled_inside_but_transparent": 0,
+     "palette_problems": [],
+     "values_present": [
+      111,
+      112,
+      124,
+      215,
+      220
+     ]
+    },
+    "8": {
+     "tile_pixels": 131072,
+     "opaque_pixels": 4732,
+     "opaque_pixels_not_touching_boundary": 0,
+     "sampled_pixels": 20000,
+     "sampled_outside_but_opaque": 0,
+     "sampled_inside_but_transparent": 0,
+     "palette_problems": [],
+     "values_present": [
+      111,
+      112,
+      124,
+      215,
+      216,
+      220
+     ]
+    },
+    "9": {
+     "tile_pixels": 131072,
+     "opaque_pixels": 18944,
+     "opaque_pixels_not_touching_boundary": 0,
+     "sampled_pixels": 20000,
+     "sampled_outside_but_opaque": 0,
+     "sampled_inside_but_transparent": 0,
+     "palette_problems": [],
+     "values_present": [
+      111,
+      112,
+      124,
+      215,
+      216,
+      220
+     ]
+    },
+    "10": {
+     "tile_pixels": 262144,
+     "opaque_pixels": 75821,
+     "opaque_pixels_not_touching_boundary": 0,
+     "sampled_pixels": 20000,
+     "sampled_outside_but_opaque": 0,
+     "sampled_inside_but_transparent": 0,
+     "palette_problems": [],
+     "values_present": [
+      111,
+      112,
+      124,
+      215,
+      216,
+      220
+     ]
+    },
+    "11": {
+     "tile_pixels": 786432,
+     "opaque_pixels": 303220,
+     "opaque_pixels_not_touching_boundary": 0,
+     "sampled_pixels": 20000,
+     "sampled_outside_but_opaque": 0,
+     "sampled_inside_but_transparent": 1,
+     "palette_problems": [],
+     "values_present": [
+      111,
+      112,
+      124,
+      215,
+      216,
+      220
+     ]
+    },
+    "12": {
+     "tile_pixels": 3145728,
+     "opaque_pixels": 1212449,
+     "opaque_pixels_not_touching_boundary": 0,
+     "sampled_pixels": 20000,
+     "sampled_outside_but_opaque": 0,
+     "sampled_inside_but_transparent": 0,
+     "palette_problems": [],
+     "values_present": [
+      111,
+      112,
+      124,
+      215,
+      216,
+      220
+     ]
+    },
+    "13": {
+     "tile_pixels": 9830400,
+     "opaque_pixels": 4847828,
+     "opaque_pixels_not_touching_boundary": 0,
+     "sampled_pixels": 20000,
+     "sampled_outside_but_opaque": 0,
+     "sampled_inside_but_transparent": 8,
+     "palette_problems": [],
+     "values_present": [
+      111,
+      112,
+      124,
+      215,
+      216,
+      220
+     ],
+     "interior_comparison": {
+      "opaque_pixels_compared": 4847828,
+      "match_source_class_at_pixel_centre": 0.997299,
+      "pixels_with_uniform_3x3_source": 3468364,
+      "match_where_source_3x3_uniform": 1.0,
+      "mismatches_where_source_3x3_uniform": 0,
+      "mismatches_with_class_from_source_3x3": 13094,
+      "mismatches_with_class_not_in_source_3x3": 0
+     },
+     "sampled_inside_but_transparent_with_source_no_data": 8
+    },
+    "14": {
+     "tile_pixels": 37355520,
+     "opaque_pixels": 19391237,
+     "opaque_pixels_not_touching_boundary": 0,
+     "sampled_pixels": 20000,
+     "sampled_outside_but_opaque": 0,
+     "sampled_inside_but_transparent": 6,
+     "palette_problems": [],
+     "values_present": [
+      111,
+      112,
+      124,
+      215,
+      216,
+      220
+     ],
+     "interior_comparison": {
+      "opaque_pixels_compared": 19391237,
+      "match_source_class_at_pixel_centre": 0.997534,
+      "pixels_with_uniform_3x3_source": 13872592,
+      "match_where_source_3x3_uniform": 1.0,
+      "mismatches_where_source_3x3_uniform": 0,
+      "mismatches_with_class_from_source_3x3": 47814,
+      "mismatches_with_class_not_in_source_3x3": 0
+     },
+     "sampled_inside_but_transparent_with_source_no_data": 6
+    }
+   },
+   "coastal_points": {
+    "Surfers Paradise, ocean 300 m off the beach": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": false,
+      "9": false,
+      "10": false,
+      "11": false,
+      "12": false,
+      "13": false,
+      "14": false
+     },
+     "tile_value": {
+      "7": 215,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0
+     }
+    },
+    "Surfers Paradise, beach sand east of the esplanade": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": false,
+      "9": true,
+      "10": false,
+      "11": false,
+      "12": false,
+      "13": false,
+      "14": false
+     },
+     "tile_value": {
+      "7": 215,
+      "8": 0,
+      "9": 215,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0
+     }
+    },
+    "Main Beach, ocean": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": false,
+      "9": false,
+      "10": false,
+      "11": false,
+      "12": false,
+      "13": false,
+      "14": false
+     },
+     "tile_value": {
+      "7": 215,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0
+     }
+    },
+    "Gold Coast Seaway": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+     },
+     "tile_value": {
+      "7": 112,
+      "8": 112,
+      "9": 215,
+      "10": 215,
+      "11": 112,
+      "12": 112,
+      "13": 112,
+      "14": 112
+     }
+    },
+    "South Stradbroke Island": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+     },
+     "tile_value": {
+      "7": 112,
+      "8": 112,
+      "9": 112,
+      "10": 112,
+      "11": 112,
+      "12": 112,
+      "13": 112,
+      "14": 112
+     }
+    },
+    "Broadwater": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+     },
+     "tile_value": {
+      "7": 220,
+      "8": 220,
+      "9": 220,
+      "10": 220,
+      "11": 220,
+      "12": 220,
+      "13": 220,
+      "14": 220
+     }
+    },
+    "Southern Moreton Bay near Jumpinpin": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+     },
+     "tile_value": {
+      "7": 220,
+      "8": 220,
+      "9": 220,
+      "10": 220,
+      "11": 216,
+      "12": 220,
+      "13": 220,
+      "14": 220
+     }
+    },
+    "Burleigh Heads, ocean": {
+     "inside_boundary_at_pixel_centre": {
+      "7": false,
+      "8": false,
+      "9": false,
+      "10": false,
+      "11": false,
+      "12": false,
+      "13": false,
+      "14": false
+     },
+     "tile_value": {
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0
+     }
+    },
+    "Coolangatta, ocean": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": false,
+      "9": true,
+      "10": false,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+     },
+     "tile_value": {
+      "7": 215,
+      "8": 0,
+      "9": 215,
+      "10": 0,
+      "11": 112,
+      "12": 112,
+      "13": 112,
+      "14": 112
+     }
+    },
+    "Tweed River, New South Wales": {
+     "inside_boundary_at_pixel_centre": {
+      "7": false,
+      "8": false,
+      "9": false,
+      "10": false,
+      "11": false,
+      "12": false,
+      "13": false,
+      "14": false
+     },
+     "tile_value": {
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0
+     }
+    },
+    "Hinze Dam": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+     },
+     "tile_value": {
+      "7": 112,
+      "8": 220,
+      "9": 112,
+      "10": 112,
+      "11": 112,
+      "12": 112,
+      "13": 112,
+      "14": 112
+     }
+    },
+    "Logan River at the northern boundary": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+     },
+     "tile_value": {
+      "7": 112,
+      "8": 112,
+      "9": 112,
+      "10": 112,
+      "11": 112,
+      "12": 112,
+      "13": 112,
+      "14": 112
+     }
+    }
+   },
+   "cached_window_matches_remote_mosaic": {
+    "points": 500,
+    "matching": 500
+   },
+   "coastal_points_consistent": true
+  },
+  "2020": {
+   "zooms": {
+    "7": {
+     "tile_pixels": 65536,
+     "opaque_pixels": 1183,
+     "opaque_pixels_not_touching_boundary": 0,
+     "sampled_pixels": 20000,
+     "sampled_outside_but_opaque": 0,
+     "sampled_inside_but_transparent": 0,
+     "palette_problems": [],
+     "values_present": [
+      111,
+      112,
+      124,
+      215,
+      220
+     ]
+    },
+    "8": {
+     "tile_pixels": 131072,
+     "opaque_pixels": 4732,
+     "opaque_pixels_not_touching_boundary": 0,
+     "sampled_pixels": 20000,
+     "sampled_outside_but_opaque": 0,
+     "sampled_inside_but_transparent": 0,
+     "palette_problems": [],
+     "values_present": [
+      111,
+      112,
+      124,
+      215,
+      216,
+      220
+     ]
+    },
+    "9": {
+     "tile_pixels": 131072,
+     "opaque_pixels": 18944,
+     "opaque_pixels_not_touching_boundary": 0,
+     "sampled_pixels": 20000,
+     "sampled_outside_but_opaque": 0,
+     "sampled_inside_but_transparent": 0,
+     "palette_problems": [],
+     "values_present": [
+      111,
+      112,
+      124,
+      215,
+      216,
+      220
+     ]
+    },
+    "10": {
+     "tile_pixels": 262144,
+     "opaque_pixels": 75819,
+     "opaque_pixels_not_touching_boundary": 0,
+     "sampled_pixels": 20000,
+     "sampled_outside_but_opaque": 0,
+     "sampled_inside_but_transparent": 0,
+     "palette_problems": [],
+     "values_present": [
+      111,
+      112,
+      124,
+      215,
+      216,
+      220
+     ]
+    },
+    "11": {
+     "tile_pixels": 786432,
+     "opaque_pixels": 303207,
+     "opaque_pixels_not_touching_boundary": 0,
+     "sampled_pixels": 20000,
+     "sampled_outside_but_opaque": 0,
+     "sampled_inside_but_transparent": 3,
+     "palette_problems": [],
+     "values_present": [
+      111,
+      112,
+      124,
+      215,
+      216,
+      220
+     ]
+    },
+    "12": {
+     "tile_pixels": 3145728,
+     "opaque_pixels": 1212258,
+     "opaque_pixels_not_touching_boundary": 0,
+     "sampled_pixels": 20000,
+     "sampled_outside_but_opaque": 0,
+     "sampled_inside_but_transparent": 2,
+     "palette_problems": [],
+     "values_present": [
+      111,
+      112,
+      124,
+      215,
+      216,
+      220
+     ]
+    },
+    "13": {
+     "tile_pixels": 9830400,
+     "opaque_pixels": 4846094,
+     "opaque_pixels_not_touching_boundary": 0,
+     "sampled_pixels": 20000,
+     "sampled_outside_but_opaque": 0,
+     "sampled_inside_but_transparent": 10,
+     "palette_problems": [],
+     "values_present": [
+      111,
+      112,
+      124,
+      215,
+      216,
+      220
+     ],
+     "interior_comparison": {
+      "opaque_pixels_compared": 4846094,
+      "match_source_class_at_pixel_centre": 0.997503,
+      "pixels_with_uniform_3x3_source": 3558612,
+      "match_where_source_3x3_uniform": 1.0,
+      "mismatches_where_source_3x3_uniform": 0,
+      "mismatches_with_class_from_source_3x3": 12100,
+      "mismatches_with_class_not_in_source_3x3": 0
+     },
+     "sampled_inside_but_transparent_with_source_no_data": 10
+    },
+    "14": {
+     "tile_pixels": 37355520,
+     "opaque_pixels": 19384352,
+     "opaque_pixels_not_touching_boundary": 0,
+     "sampled_pixels": 20000,
+     "sampled_outside_but_opaque": 0,
+     "sampled_inside_but_transparent": 16,
+     "palette_problems": [],
+     "values_present": [
+      111,
+      112,
+      124,
+      215,
+      216,
+      220
+     ],
+     "interior_comparison": {
+      "opaque_pixels_compared": 19384352,
+      "match_source_class_at_pixel_centre": 0.997707,
+      "pixels_with_uniform_3x3_source": 14233817,
+      "match_where_source_3x3_uniform": 1.0,
+      "mismatches_where_source_3x3_uniform": 0,
+      "mismatches_with_class_from_source_3x3": 44440,
+      "mismatches_with_class_not_in_source_3x3": 0
+     },
+     "sampled_inside_but_transparent_with_source_no_data": 16
+    }
+   },
+   "coastal_points": {
+    "Surfers Paradise, ocean 300 m off the beach": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": false,
+      "9": false,
+      "10": false,
+      "11": false,
+      "12": false,
+      "13": false,
+      "14": false
+     },
+     "tile_value": {
+      "7": 215,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0
+     }
+    },
+    "Surfers Paradise, beach sand east of the esplanade": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": false,
+      "9": true,
+      "10": false,
+      "11": false,
+      "12": false,
+      "13": false,
+      "14": false
+     },
+     "tile_value": {
+      "7": 215,
+      "8": 0,
+      "9": 215,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0
+     }
+    },
+    "Main Beach, ocean": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": false,
+      "9": false,
+      "10": false,
+      "11": false,
+      "12": false,
+      "13": false,
+      "14": false
+     },
+     "tile_value": {
+      "7": 215,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0
+     }
+    },
+    "Gold Coast Seaway": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+     },
+     "tile_value": {
+      "7": 112,
+      "8": 112,
+      "9": 112,
+      "10": 215,
+      "11": 215,
+      "12": 112,
+      "13": 112,
+      "14": 112
+     }
+    },
+    "South Stradbroke Island": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+     },
+     "tile_value": {
+      "7": 112,
+      "8": 112,
+      "9": 112,
+      "10": 112,
+      "11": 112,
+      "12": 112,
+      "13": 112,
+      "14": 112
+     }
+    },
+    "Broadwater": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+     },
+     "tile_value": {
+      "7": 220,
+      "8": 220,
+      "9": 220,
+      "10": 220,
+      "11": 220,
+      "12": 220,
+      "13": 220,
+      "14": 220
+     }
+    },
+    "Southern Moreton Bay near Jumpinpin": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+     },
+     "tile_value": {
+      "7": 220,
+      "8": 220,
+      "9": 220,
+      "10": 220,
+      "11": 216,
+      "12": 220,
+      "13": 220,
+      "14": 220
+     }
+    },
+    "Burleigh Heads, ocean": {
+     "inside_boundary_at_pixel_centre": {
+      "7": false,
+      "8": false,
+      "9": false,
+      "10": false,
+      "11": false,
+      "12": false,
+      "13": false,
+      "14": false
+     },
+     "tile_value": {
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0
+     }
+    },
+    "Coolangatta, ocean": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": false,
+      "9": true,
+      "10": false,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+     },
+     "tile_value": {
+      "7": 215,
+      "8": 0,
+      "9": 215,
+      "10": 0,
+      "11": 112,
+      "12": 112,
+      "13": 112,
+      "14": 112
+     }
+    },
+    "Tweed River, New South Wales": {
+     "inside_boundary_at_pixel_centre": {
+      "7": false,
+      "8": false,
+      "9": false,
+      "10": false,
+      "11": false,
+      "12": false,
+      "13": false,
+      "14": false
+     },
+     "tile_value": {
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0
+     }
+    },
+    "Hinze Dam": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+     },
+     "tile_value": {
+      "7": 112,
+      "8": 220,
+      "9": 112,
+      "10": 112,
+      "11": 112,
+      "12": 112,
+      "13": 112,
+      "14": 112
+     }
+    },
+    "Logan River at the northern boundary": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+     },
+     "tile_value": {
+      "7": 112,
+      "8": 112,
+      "9": 112,
+      "10": 112,
+      "11": 112,
+      "12": 112,
+      "13": 112,
+      "14": 112
+     }
+    }
+   },
+   "cached_window_matches_remote_mosaic": {
+    "points": 500,
+    "matching": 500
+   },
+   "coastal_points_consistent": true
+  },
+  "2025": {
+   "zooms": {
+    "7": {
+     "tile_pixels": 65536,
+     "opaque_pixels": 1183,
+     "opaque_pixels_not_touching_boundary": 0,
+     "sampled_pixels": 20000,
+     "sampled_outside_but_opaque": 0,
+     "sampled_inside_but_transparent": 0,
+     "palette_problems": [],
+     "values_present": [
+      111,
+      112,
+      124,
+      215,
+      220
+     ]
+    },
+    "8": {
+     "tile_pixels": 131072,
+     "opaque_pixels": 4732,
+     "opaque_pixels_not_touching_boundary": 0,
+     "sampled_pixels": 20000,
+     "sampled_outside_but_opaque": 0,
+     "sampled_inside_but_transparent": 0,
+     "palette_problems": [],
+     "values_present": [
+      111,
+      112,
+      124,
+      215,
+      216,
+      220
+     ]
+    },
+    "9": {
+     "tile_pixels": 131072,
+     "opaque_pixels": 18944,
+     "opaque_pixels_not_touching_boundary": 0,
+     "sampled_pixels": 20000,
+     "sampled_outside_but_opaque": 0,
+     "sampled_inside_but_transparent": 0,
+     "palette_problems": [],
+     "values_present": [
+      111,
+      112,
+      124,
+      215,
+      216,
+      220
+     ]
+    },
+    "10": {
+     "tile_pixels": 262144,
+     "opaque_pixels": 75821,
+     "opaque_pixels_not_touching_boundary": 0,
+     "sampled_pixels": 20000,
+     "sampled_outside_but_opaque": 0,
+     "sampled_inside_but_transparent": 0,
+     "palette_problems": [],
+     "values_present": [
+      111,
+      112,
+      124,
+      215,
+      216,
+      220
+     ]
+    },
+    "11": {
+     "tile_pixels": 786432,
+     "opaque_pixels": 303215,
+     "opaque_pixels_not_touching_boundary": 0,
+     "sampled_pixels": 20000,
+     "sampled_outside_but_opaque": 0,
+     "sampled_inside_but_transparent": 1,
+     "palette_problems": [],
+     "values_present": [
+      111,
+      112,
+      124,
+      215,
+      216,
+      220
+     ]
+    },
+    "12": {
+     "tile_pixels": 3145728,
+     "opaque_pixels": 1212253,
+     "opaque_pixels_not_touching_boundary": 0,
+     "sampled_pixels": 20000,
+     "sampled_outside_but_opaque": 0,
+     "sampled_inside_but_transparent": 5,
+     "palette_problems": [],
+     "values_present": [
+      111,
+      112,
+      124,
+      215,
+      216,
+      220
+     ]
+    },
+    "13": {
+     "tile_pixels": 9830400,
+     "opaque_pixels": 4845710,
+     "opaque_pixels_not_touching_boundary": 0,
+     "sampled_pixels": 20000,
+     "sampled_outside_but_opaque": 0,
+     "sampled_inside_but_transparent": 13,
+     "palette_problems": [],
+     "values_present": [
+      111,
+      112,
+      124,
+      215,
+      216,
+      220
+     ],
+     "interior_comparison": {
+      "opaque_pixels_compared": 4845710,
+      "match_source_class_at_pixel_centre": 0.996177,
+      "pixels_with_uniform_3x3_source": 2980723,
+      "match_where_source_3x3_uniform": 1.0,
+      "mismatches_where_source_3x3_uniform": 0,
+      "mismatches_with_class_from_source_3x3": 18526,
+      "mismatches_with_class_not_in_source_3x3": 0
+     },
+     "sampled_inside_but_transparent_with_source_no_data": 13
+    },
+    "14": {
+     "tile_pixels": 37355520,
+     "opaque_pixels": 19382701,
+     "opaque_pixels_not_touching_boundary": 0,
+     "sampled_pixels": 20000,
+     "sampled_outside_but_opaque": 0,
+     "sampled_inside_but_transparent": 11,
+     "palette_problems": [],
+     "values_present": [
+      111,
+      112,
+      124,
+      215,
+      216,
+      220
+     ],
+     "interior_comparison": {
+      "opaque_pixels_compared": 19382701,
+      "match_source_class_at_pixel_centre": 0.996521,
+      "pixels_with_uniform_3x3_source": 11920944,
+      "match_where_source_3x3_uniform": 1.0,
+      "mismatches_where_source_3x3_uniform": 0,
+      "mismatches_with_class_from_source_3x3": 67441,
+      "mismatches_with_class_not_in_source_3x3": 0
+     },
+     "sampled_inside_but_transparent_with_source_no_data": 11
+    }
+   },
+   "coastal_points": {
+    "Surfers Paradise, ocean 300 m off the beach": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": false,
+      "9": false,
+      "10": false,
+      "11": false,
+      "12": false,
+      "13": false,
+      "14": false
+     },
+     "tile_value": {
+      "7": 215,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0
+     }
+    },
+    "Surfers Paradise, beach sand east of the esplanade": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": false,
+      "9": true,
+      "10": false,
+      "11": false,
+      "12": false,
+      "13": false,
+      "14": false
+     },
+     "tile_value": {
+      "7": 215,
+      "8": 0,
+      "9": 215,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0
+     }
+    },
+    "Main Beach, ocean": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": false,
+      "9": false,
+      "10": false,
+      "11": false,
+      "12": false,
+      "13": false,
+      "14": false
+     },
+     "tile_value": {
+      "7": 112,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0
+     }
+    },
+    "Gold Coast Seaway": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+     },
+     "tile_value": {
+      "7": 112,
+      "8": 112,
+      "9": 215,
+      "10": 215,
+      "11": 215,
+      "12": 111,
+      "13": 112,
+      "14": 112
+     }
+    },
+    "South Stradbroke Island": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+     },
+     "tile_value": {
+      "7": 220,
+      "8": 112,
+      "9": 112,
+      "10": 112,
+      "11": 112,
+      "12": 112,
+      "13": 112,
+      "14": 112
+     }
+    },
+    "Broadwater": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+     },
+     "tile_value": {
+      "7": 220,
+      "8": 220,
+      "9": 220,
+      "10": 220,
+      "11": 220,
+      "12": 220,
+      "13": 220,
+      "14": 220
+     }
+    },
+    "Southern Moreton Bay near Jumpinpin": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+     },
+     "tile_value": {
+      "7": 220,
+      "8": 220,
+      "9": 220,
+      "10": 220,
+      "11": 220,
+      "12": 220,
+      "13": 220,
+      "14": 220
+     }
+    },
+    "Burleigh Heads, ocean": {
+     "inside_boundary_at_pixel_centre": {
+      "7": false,
+      "8": false,
+      "9": false,
+      "10": false,
+      "11": false,
+      "12": false,
+      "13": false,
+      "14": false
+     },
+     "tile_value": {
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0
+     }
+    },
+    "Coolangatta, ocean": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": false,
+      "9": true,
+      "10": false,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+     },
+     "tile_value": {
+      "7": 215,
+      "8": 0,
+      "9": 215,
+      "10": 0,
+      "11": 112,
+      "12": 112,
+      "13": 112,
+      "14": 112
+     }
+    },
+    "Tweed River, New South Wales": {
+     "inside_boundary_at_pixel_centre": {
+      "7": false,
+      "8": false,
+      "9": false,
+      "10": false,
+      "11": false,
+      "12": false,
+      "13": false,
+      "14": false
+     },
+     "tile_value": {
+      "7": 0,
+      "8": 0,
+      "9": 0,
+      "10": 0,
+      "11": 0,
+      "12": 0,
+      "13": 0,
+      "14": 0
+     }
+    },
+    "Hinze Dam": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+     },
+     "tile_value": {
+      "7": 112,
+      "8": 220,
+      "9": 111,
+      "10": 112,
+      "11": 112,
+      "12": 112,
+      "13": 112,
+      "14": 112
+     }
+    },
+    "Logan River at the northern boundary": {
+     "inside_boundary_at_pixel_centre": {
+      "7": true,
+      "8": true,
+      "9": true,
+      "10": true,
+      "11": true,
+      "12": true,
+      "13": true,
+      "14": true
+     },
+     "tile_value": {
+      "7": 112,
+      "8": 112,
+      "9": 112,
+      "10": 112,
+      "11": 112,
+      "12": 112,
+      "13": 112,
+      "14": 112
+     }
+    }
+   },
+   "cached_window_matches_remote_mosaic": {
+    "points": 500,
+    "matching": 500
+   },
+   "coastal_points_consistent": true
+  }
+ },
+ "all_checks_pass": true
+}

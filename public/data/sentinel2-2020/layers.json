@@ -1,0 +1,148 @@
+{
+ "generated": "2026-11-08T12:56:23+00:00",
+ "title": "Sentinel-2 index analysis (this project)",
+ "source": {
+  "product": "Sentinel-2 Level-2A surface reflectance, Collection 1",
+  "provider": "ESA Copernicus, distributed by Element 84 Earth Search on AWS",
+  "stac_collection": "https://earth-search.aws.element84.com/v1/collections/sentinel-2-c1-l2a",
+  "attribution": "Contains modified Copernicus Sentinel data 2020",
+  "processing_baseline": "05.00"
+ },
+ "period": {
+  "start": "2020-01-01",
+  "end": "2020-12-31",
+  "first_acquisition": "2020-01-01",
+  "last_acquisition": "2020-12-31"
+ },
+ "acquisitions_used": 125,
+ "composite": "Median of per-observation index values",
+ "resolution_m": 20,
+ "grid_crs": "EPSG:32756",
+ "minimum_valid_observations": 5,
+ "tile_size": 256,
+ "min_zoom": 8,
+ "max_zoom": 13,
+ "bounds": [
+  153.168916182,
+  -28.26511344,
+  153.551945912,
+  -27.690382825
+ ],
+ "layers": [
+  {
+   "id": "classes",
+   "kind": "categorical",
+   "title": "Index rule classes",
+   "path": "classes/{z}/{x}/{y}.png",
+   "classes": [
+    {
+     "value": 1,
+     "name": "Vegetation",
+     "color": "#4daf4a"
+    },
+    {
+     "value": 2,
+     "name": "Water",
+     "color": "#377eb8"
+    },
+    {
+     "value": 3,
+     "name": "Candidate artificial surface",
+     "color": "#e7298a"
+    },
+    {
+     "value": 4,
+     "name": "Uncertain or other surface",
+     "color": "#ffd92f"
+    },
+    {
+     "value": 5,
+     "name": "Insufficient observations",
+     "color": "#7f7f7f"
+    }
+   ]
+  },
+  {
+   "id": "ndvi",
+   "kind": "continuous",
+   "title": "NDVI",
+   "formula": "(NIR \u2212 Red) / (NIR + Red)",
+   "path": "ndvi/{z}/{x}/{y}.png",
+   "range": [
+    -0.2,
+    0.9
+   ],
+   "stops": [
+    [
+     -0.2,
+     "#8c510a"
+    ],
+    [
+     0.15,
+     "#dfc27d"
+    ],
+    [
+     0.45,
+     "#a6d96a"
+    ],
+    [
+     0.9,
+     "#00441b"
+    ]
+   ],
+   "steps": 100
+  },
+  {
+   "id": "ndbi",
+   "kind": "continuous",
+   "title": "NDBI",
+   "formula": "(SWIR1 \u2212 NIR) / (SWIR1 + NIR)",
+   "path": "ndbi/{z}/{x}/{y}.png",
+   "range": [
+    -0.6,
+    0.3
+   ],
+   "stops": [
+    [
+     -0.6,
+     "#2c7bb6"
+    ],
+    [
+     -0.15,
+     "#ffffbf"
+    ],
+    [
+     0.3,
+     "#d7191c"
+    ]
+   ],
+   "steps": 100
+  },
+  {
+   "id": "mndwi",
+   "kind": "continuous",
+   "title": "MNDWI",
+   "formula": "(Green \u2212 SWIR1) / (Green + SWIR1)",
+   "path": "mndwi/{z}/{x}/{y}.png",
+   "range": [
+    -0.8,
+    0.8
+   ],
+   "stops": [
+    [
+     -0.8,
+     "#8c510a"
+    ],
+    [
+     0.0,
+     "#f5f5f5"
+    ],
+    [
+     0.8,
+     "#08519c"
+    ]
+   ],
+   "steps": 100
+  }
+ ]
+}

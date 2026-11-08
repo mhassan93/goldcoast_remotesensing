@@ -1,0 +1,59 @@
+{
+ "generated": "2026-11-08T12:17:41+00:00",
+ "title": "DEA Land Cover Level 3, clipped to the City of Gold Coast",
+ "product": "DEA Land Cover (Landsat), ga_ls_landcover_class_cyear_3",
+ "version": "2.0.0",
+ "licence": "CC BY 4.0",
+ "attribution": "DEA Land Cover v2.0.0 \u00a9 Commonwealth of Australia (Geoscience Australia), CC BY 4.0",
+ "changes": "Clipped to the City of Gold Coast boundary and re-tiled by this project. Class codes and colours unchanged.",
+ "source_template": "https://dea-public-data.s3.ap-southeast-2.amazonaws.com/derivative/ga_ls_landcover_class_cyear_3/2-0-0/continental_mosaics/{year}--P1Y/ga_ls_landcover_class_cyear_3_mosaic_{year}--P1Y_level3.tif",
+ "years": [
+  2010,
+  2015,
+  2020,
+  2025
+ ],
+ "path": "{year}/{z}/{x}/{y}.png",
+ "tile_size": 256,
+ "min_zoom": 7,
+ "max_zoom": 14,
+ "bounds": [
+  153.168916182,
+  -28.26511344,
+  153.551945912,
+  -27.690382825
+ ],
+ "palette_index": "Each opaque pixel's palette index is its official Level 3 class code. Index 0 is transparent.",
+ "classes": [
+  {
+   "value": 111,
+   "name": "Cultivated Terrestrial Vegetation",
+   "color": "#acbc2d"
+  },
+  {
+   "value": 112,
+   "name": "(Semi-)Natural Terrestrial Vegetation",
+   "color": "#0e7912"
+  },
+  {
+   "value": 124,
+   "name": "Natural Aquatic Vegetation",
+   "color": "#1ebf79"
+  },
+  {
+   "value": 215,
+   "name": "Artificial Surface",
+   "color": "#da5c69"
+  },
+  {
+   "value": 216,
+   "name": "Natural Bare Surface",
+   "color": "#f3ab69"
+  },
+  {
+   "value": 220,
+   "name": "Water",
+   "color": "#4d9fdc"
+  }
+ ]
+}

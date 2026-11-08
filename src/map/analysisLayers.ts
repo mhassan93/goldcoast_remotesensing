@@ -15,22 +15,31 @@ import {
   sentinelAttribution,
   sentinelTileUrl,
   sentinelViews,
+  sentinelYears,
   type SentinelIndexMetadata,
   type SentinelView,
+  type SentinelYear,
 } from './sentinelIndexLayers.ts'
 
-export type AnalysisLayerKey = `dea-${LandCoverYear}` | `sentinel-${SentinelView}`
+type DeaLayerKey = `dea-${LandCoverYear}`
+
+export type AnalysisLayerKey = DeaLayerKey | `sentinel-${SentinelYear}-${SentinelView}`
+
+type DisplayResampling = 'linear' | 'nearest'
 
 export type AnalysisLayerDefinition = {
   key: AnalysisLayerKey
   source: RasterSourceSpecification
   isCategorical: boolean
   minZoom: number
+  fixedResampling: DisplayResampling | null
 }
 
+const deaLayerKeys: DeaLayerKey[] = landCoverYears.map((year) => `dea-${year}` as const)
+
 const analysisLayerKeys: AnalysisLayerKey[] = [
-  ...landCoverYears.map((year) => `dea-${year}` as const),
-  ...sentinelViews.map((view) => `sentinel-${view}` as const),
+  ...deaLayerKeys,
+  ...sentinelYears.flatMap((year) => sentinelViews.map((view) => `sentinel-${year}-${view}` as const)),
 ]
 
 function analysisSourceId(key: AnalysisLayerKey) {
@@ -46,6 +55,7 @@ export function deaLayerDefinition(year: LandCoverYear): AnalysisLayerDefinition
     key: `dea-${year}`,
     isCategorical: true,
     minZoom: deaLandCoverMinZoom,
+    fixedResampling: null,
     source: {
       type: 'raster',
       tiles: [deaLandCoverTileUrl(year)],
@@ -58,15 +68,21 @@ export function deaLayerDefinition(year: LandCoverYear): AnalysisLayerDefinition
   }
 }
 
-export function sentinelLayerDefinition(metadata: SentinelIndexMetadata, view: SentinelView): AnalysisLayerDefinition {
+export function sentinelLayerDefinition(
+  metadata: SentinelIndexMetadata,
+  year: SentinelYear,
+  view: SentinelView,
+): AnalysisLayerDefinition {
   const layer = findSentinelLayer(metadata, view)
+  const isCategorical = layer.kind === 'categorical'
   return {
-    key: `sentinel-${view}`,
-    isCategorical: layer.kind === 'categorical',
+    key: `sentinel-${year}-${view}`,
+    isCategorical,
     minZoom: metadata.min_zoom,
+    fixedResampling: isCategorical ? 'nearest' : 'linear',
     source: {
       type: 'raster',
-      tiles: [sentinelTileUrl(layer)],
+      tiles: [sentinelTileUrl(year, layer)],
       tileSize: metadata.tile_size,
       minzoom: metadata.min_zoom,
       maxzoom: metadata.max_zoom,
@@ -87,7 +103,7 @@ function findLayerToInsertAnalysisBelow(map: MapLibreMap) {
   return map.getStyle().layers.find((layer) => layer.type === 'symbol')?.id
 }
 
-function displayResampling(isDisplaySmoothed: boolean) {
+function displayResampling(isDisplaySmoothed: boolean): DisplayResampling {
   return isDisplaySmoothed ? 'linear' : 'nearest'
 }
 
@@ -104,6 +120,7 @@ function addAnalysisLayer(
   if (source) {
     source.roundZoom = false
   }
+  const resampling = definition.fixedResampling ?? displayResampling(isDisplaySmoothed)
 
   map.addLayer(
     {
@@ -115,12 +132,8 @@ function addAnalysisLayer(
         visibility: 'none',
       },
       paint: definition.isCategorical
-        ? {
-            'raster-opacity': opacity,
-            'raster-resampling': displayResampling(isDisplaySmoothed),
-            'raster-fade-duration': 0,
-          }
-        : { 'raster-opacity': opacity, 'raster-resampling': displayResampling(isDisplaySmoothed) },
+        ? { 'raster-opacity': opacity, 'raster-resampling': resampling, 'raster-fade-duration': 0 }
+        : { 'raster-opacity': opacity, 'raster-resampling': resampling },
     },
     findLayerToInsertAnalysisBelow(map),
   )
@@ -162,7 +175,7 @@ export function setAnalysisLayerOpacity(map: MapLibreMap, opacity: number) {
 }
 
 export function setAnalysisLayerSmoothing(map: MapLibreMap, isDisplaySmoothed: boolean) {
-  for (const key of analysisLayerKeys) {
+  for (const key of deaLayerKeys) {
     if (map.getLayer(analysisLayerId(key))) {
       map.setPaintProperty(analysisLayerId(key), 'raster-resampling', displayResampling(isDisplaySmoothed))
     }

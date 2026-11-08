@@ -1,0 +1,279 @@
+{
+ "dea-tiles": {
+  "completed": "2026-11-08T12:17:41+00:00",
+  "output": "public/data/dea-land-cover",
+  "zooms": [
+   7,
+   14
+  ],
+  "boundary_to_source_crs": "Inverse of GDA94 to GDA2020 (1) + Australian Albers (with axis order normalized for visualization)",
+  "boundary_to_tile_grid": "Boundary coordinates projected to EPSG:3857 as given, the same way MapLibre draws the outline",
+  "clipping": "A tile pixel is kept only if its centre lies inside the boundary, tested on every zoom's own tile grid. Enlarged zooms take the class at the pixel centre (nearest); reduced zooms take the most common class of the source pixels whose centres lie inside the boundary (mode).",
+  "years": {
+   "2010": {
+    "source": "https://dea-public-data.s3.ap-southeast-2.amazonaws.com/derivative/ga_ls_landcover_class_cyear_3/2-0-0/continental_mosaics/2010--P1Y/ga_ls_landcover_class_cyear_3_mosaic_2010--P1Y_level3.tif",
+    "source_window": {
+     "window": {
+      "column": 132127,
+      "row": 70622,
+      "width": 1291,
+      "height": 2216
+     },
+     "compressed_bytes_read": 368465,
+     "mosaic_size": [
+      137600,
+      128000
+     ],
+     "seconds": 1.8
+    },
+    "source_pixels_inside_boundary": 1529547,
+    "class_area_inside_boundary_km2": {
+     "Cultivated Terrestrial Vegetation": 49.19,
+     "(Semi-)Natural Terrestrial Vegetation": 1080.64,
+     "Natural Aquatic Vegetation": 53.19,
+     "Artificial Surface": 74.39,
+     "Natural Bare Surface": 4.24,
+     "Water": 114.49
+    },
+    "no_data_area_inside_boundary_km2": 0.45,
+    "tiles": 789,
+    "bytes": 1598855,
+    "largest_tile_bytes": 8816,
+    "resampling_by_zoom": {
+     "7": {
+      "method": "mode",
+      "ground_metres_per_pixel": 1080.1
+     },
+     "8": {
+      "method": "mode",
+      "ground_metres_per_pixel": 540.0
+     },
+     "9": {
+      "method": "mode",
+      "ground_metres_per_pixel": 270.0
+     },
+     "10": {
+      "method": "mode",
+      "ground_metres_per_pixel": 135.0
+     },
+     "11": {
+      "method": "mode",
+      "ground_metres_per_pixel": 67.5
+     },
+     "12": {
+      "method": "mode",
+      "ground_metres_per_pixel": 33.8
+     },
+     "13": {
+      "method": "nearest",
+      "ground_metres_per_pixel": 16.9
+     },
+     "14": {
+      "method": "nearest",
+      "ground_metres_per_pixel": 8.4
+     }
+    }
+   },
+   "2015": {
+    "source": "https://dea-public-data.s3.ap-southeast-2.amazonaws.com/derivative/ga_ls_landcover_class_cyear_3/2-0-0/continental_mosaics/2015--P1Y/ga_ls_landcover_class_cyear_3_mosaic_2015--P1Y_level3.tif",
+    "source_window": {
+     "window": {
+      "column": 132127,
+      "row": 70622,
+      "width": 1291,
+      "height": 2216
+     },
+     "compressed_bytes_read": 447448,
+     "mosaic_size": [
+      137600,
+      128000
+     ],
+     "seconds": 0.7
+    },
+    "source_pixels_inside_boundary": 1529547,
+    "class_area_inside_boundary_km2": {
+     "Cultivated Terrestrial Vegetation": 91.95,
+     "(Semi-)Natural Terrestrial Vegetation": 1024.28,
+     "Natural Aquatic Vegetation": 52.71,
+     "Artificial Surface": 83.35,
+     "Natural Bare Surface": 4.27,
+     "Water": 118.95
+    },
+    "no_data_area_inside_boundary_km2": 1.09,
+    "tiles": 789,
+    "bytes": 1739684,
+    "largest_tile_bytes": 9831,
+    "resampling_by_zoom": {
+     "7": {
+      "method": "mode",
+      "ground_metres_per_pixel": 1080.1
+     },
+     "8": {
+      "method": "mode",
+      "ground_metres_per_pixel": 540.0
+     },
+     "9": {
+      "method": "mode",
+      "ground_metres_per_pixel": 270.0
+     },
+     "10": {
+      "method": "mode",
+      "ground_metres_per_pixel": 135.0
+     },
+     "11": {
+      "method": "mode",
+      "ground_metres_per_pixel": 67.5
+     },
+     "12": {
+      "method": "mode",
+      "ground_metres_per_pixel": 33.8
+     },
+     "13": {
+      "method": "nearest",
+      "ground_metres_per_pixel": 16.9
+     },
+     "14": {
+      "method": "nearest",
+      "ground_metres_per_pixel": 8.4
+     }
+    }
+   },
+   "2020": {
+    "source": "https://dea-public-data.s3.ap-southeast-2.amazonaws.com/derivative/ga_ls_landcover_class_cyear_3/2-0-0/continental_mosaics/2020--P1Y/ga_ls_landcover_class_cyear_3_mosaic_2020--P1Y_level3.tif",
+    "source_window": {
+     "window": {
+      "column": 132127,
+      "row": 70622,
+      "width": 1291,
+      "height": 2216
+     },
+     "compressed_bytes_read": 414166,
+     "mosaic_size": [
+      137600,
+      128000
+     ],
+     "seconds": 1.1
+    },
+    "source_pixels_inside_boundary": 1529547,
+    "class_area_inside_boundary_km2": {
+     "Cultivated Terrestrial Vegetation": 67.31,
+     "(Semi-)Natural Terrestrial Vegetation": 1027.62,
+     "Natural Aquatic Vegetation": 52.05,
+     "Artificial Surface": 103.29,
+     "Natural Bare Surface": 5.11,
+     "Water": 119.64
+    },
+    "no_data_area_inside_boundary_km2": 1.58,
+    "tiles": 789,
+    "bytes": 1688141,
+    "largest_tile_bytes": 9800,
+    "resampling_by_zoom": {
+     "7": {
+      "method": "mode",
+      "ground_metres_per_pixel": 1080.1
+     },
+     "8": {
+      "method": "mode",
+      "ground_metres_per_pixel": 540.0
+     },
+     "9": {
+      "method": "mode",
+      "ground_metres_per_pixel": 270.0
+     },
+     "10": {
+      "method": "mode",
+      "ground_metres_per_pixel": 135.0
+     },
+     "11": {
+      "method": "mode",
+      "ground_metres_per_pixel": 67.5
+     },
+     "12": {
+      "method": "mode",
+      "ground_metres_per_pixel": 33.8
+     },
+     "13": {
+      "method": "nearest",
+      "ground_metres_per_pixel": 16.9
+     },
+     "14": {
+      "method": "nearest",
+      "ground_metres_per_pixel": 8.4
+     }
+    }
+   },
+   "2025": {
+    "source": "https://dea-public-data.s3.ap-southeast-2.amazonaws.com/derivative/ga_ls_landcover_class_cyear_3/2-0-0/continental_mosaics/2025--P1Y/ga_ls_landcover_class_cyear_3_mosaic_2025--P1Y_level3.tif",
+    "source_window": {
+     "window": {
+      "column": 132127,
+      "row": 70622,
+      "width": 1291,
+      "height": 2216
+     },
+     "compressed_bytes_read": 590700,
+     "mosaic_size": [
+      137600,
+      128000
+     ],
+     "seconds": 1.6
+    },
+    "source_pixels_inside_boundary": 1529547,
+    "class_area_inside_boundary_km2": {
+     "Cultivated Terrestrial Vegetation": 172.19,
+     "(Semi-)Natural Terrestrial Vegetation": 930.27,
+     "Natural Aquatic Vegetation": 52.83,
+     "Artificial Surface": 95.3,
+     "Natural Bare Surface": 3.62,
+     "Water": 120.69
+    },
+    "no_data_area_inside_boundary_km2": 1.69,
+    "tiles": 789,
+    "bytes": 2052472,
+    "largest_tile_bytes": 12091,
+    "resampling_by_zoom": {
+     "7": {
+      "method": "mode",
+      "ground_metres_per_pixel": 1080.1
+     },
+     "8": {
+      "method": "mode",
+      "ground_metres_per_pixel": 540.0
+     },
+     "9": {
+      "method": "mode",
+      "ground_metres_per_pixel": 270.0
+     },
+     "10": {
+      "method": "mode",
+      "ground_metres_per_pixel": 135.0
+     },
+     "11": {
+      "method": "mode",
+      "ground_metres_per_pixel": 67.5
+     },
+     "12": {
+      "method": "mode",
+      "ground_metres_per_pixel": 33.8
+     },
+     "13": {
+      "method": "nearest",
+      "ground_metres_per_pixel": 16.9
+     },
+     "14": {
+      "method": "nearest",
+      "ground_metres_per_pixel": 8.4
+     }
+    }
+   }
+  },
+  "total_bytes": 7080758,
+  "total_files": 3157,
+  "seconds": 25.5
+ },
+ "dea-verify": {
+  "completed": "2026-11-08T12:24:16+00:00",
+  "output": "analysis/results/dea_land_cover/verification.json",
+  "all_checks_pass": true
+ }
+}

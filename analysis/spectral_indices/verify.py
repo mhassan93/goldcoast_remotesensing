@@ -163,7 +163,7 @@ def verify(config=None):
                 for name in index_names)
         for check in sample_checks)
     write_json(results_path("verification.json"), report)
-    update_manifest("verify", {"output": "analysis/results/verification.json",
+    update_manifest("verify", {"output": f"analysis/results/{config['year']}/verification.json",
                                "boundary_mask": report["boundary_mask"], "valid_data": report["valid_data"],
                                "sample_recomputation_all_match": report["sample_recomputation_all_match"]})
     print({key: value for key, value in report.items() if key != "sample_recomputation"})

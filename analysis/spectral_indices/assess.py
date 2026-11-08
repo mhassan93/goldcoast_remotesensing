@@ -105,8 +105,8 @@ def calibrate(config=None):
         summary.append(entry)
     write_table(summary, results_path("calibration_summary.csv"))
     update_manifest("calibrate", {"calibration_samples": len(rows), "summary": summary,
-                                  "outputs": ["analysis/results/calibration_samples.csv",
-                                              "analysis/results/calibration_summary.csv"]})
+                                  "outputs": [f"analysis/results/{config['year']}/calibration_samples.csv",
+                                              f"analysis/results/{config['year']}/calibration_summary.csv"]})
     for entry in summary:
         print(entry)
     return summary
@@ -177,7 +177,8 @@ def assess(config=None):
         "dea_2025_confusion": {f"{reference} -> {predicted}": count
                                for (reference, predicted), count in sorted(dea_confusion.items())},
         "rule_limits": rule_limits(config["classification"]),
-        "outputs": ["analysis/results/sample_assessment.csv", "analysis/results/assessment_summary.json"],
+        "outputs": [f"analysis/results/{config['year']}/sample_assessment.csv",
+                    f"analysis/results/{config['year']}/assessment_summary.json"],
     }
     write_json(results_path("assessment_summary.json"), summary)
     update_manifest("assess", summary)

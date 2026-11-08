@@ -1,4 +1,6 @@
-export const landCoverYears = [2010, 2025] as const
+import { publicDataTileUrl } from './publicData.ts'
+
+export const landCoverYears = [2010, 2015, 2020, 2025] as const
 
 export type LandCoverYear = (typeof landCoverYears)[number]
 
@@ -30,34 +32,15 @@ export const deaLandCoverProduct = {
   copyrightHolder: 'Commonwealth of Australia (Geoscience Australia)',
 }
 
-export const deaLandCoverAttribution = `Land cover: <a href="${deaLandCoverProduct.productPageUrl}" target="_blank" rel="noopener">DEA Land Cover v${deaLandCoverProduct.version}</a> © ${deaLandCoverProduct.copyrightHolder}, <a href="${deaLandCoverProduct.licenceUrl}" target="_blank" rel="noopener">${deaLandCoverProduct.licenceName}</a>`
-
-const deaWmtsUrl = 'https://ows.dea.ga.gov.au/wmts'
-const deaLandCoverServiceLayer = 'ga_ls_landcover_c3'
-const deaLandCoverLevel3Style = 'level3'
-const webMercatorTileMatrixSet = 'WholeWorld_WebMercator'
+export const deaLandCoverAttribution = `Land cover: <a href="${deaLandCoverProduct.productPageUrl}" target="_blank" rel="noopener">DEA Land Cover v${deaLandCoverProduct.version}</a> © ${deaLandCoverProduct.copyrightHolder}, <a href="${deaLandCoverProduct.licenceUrl}" target="_blank" rel="noopener">${deaLandCoverProduct.licenceName}</a>, clipped to the study area`
 
 export const deaLandCoverTileSize = 256
 export const deaLandCoverMinZoom = 7
 export const deaLandCoverMaxZoom = 14
 export const deaLandCoverBounds: [number, number, number, number] = [
-  112.343354889631, -44.3403132062909, 155.073704691127, -9.40358670690844,
+  153.168916182, -28.26511344, 153.551945912, -27.690382825,
 ]
 
-export function deaLandCoverTimeValue(year: LandCoverYear) {
-  return `${year}-01-01`
-}
-
 export function deaLandCoverTileUrl(year: LandCoverYear) {
-  const query = new URLSearchParams({
-    service: 'WMTS',
-    request: 'GetTile',
-    version: '1.0.0',
-    layer: deaLandCoverServiceLayer,
-    style: deaLandCoverLevel3Style,
-    format: 'image/png',
-    tileMatrixSet: webMercatorTileMatrixSet,
-    Time: deaLandCoverTimeValue(year),
-  })
-  return `${deaWmtsUrl}?${query.toString()}&tileMatrix={z}&tileCol={x}&tileRow={y}`
+  return publicDataTileUrl(`dea-land-cover/${year}/{z}/{x}/{y}.png`)
 }

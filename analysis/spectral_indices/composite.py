@@ -7,14 +7,14 @@ from rasterio.windows import Window
 from .acquire import cached_band_order
 from .grid import boundary_mask, build_grid
 from .manifest import update_manifest
-from .settings import load_config, read_json, work_path, work_root
+from .settings import load_config, read_json, work_path
 
 index_names = ("ndvi", "ndbi", "mndwi")
 count_names = ("clear", "ndvi", "ndbi", "mndwi")
 
 
 def stored_acquisitions():
-    statuses = [read_json(path) for path in sorted((work_root / "acquisitions").glob("*.json"))]
+    statuses = [read_json(path) for path in sorted(work_path("acquisitions").glob("*.json"))]
     return sorted((status for status in statuses if status["stored"]), key=lambda status: status["datetime"])
 
 
@@ -134,8 +134,9 @@ def composite(config=None):
         "pixels_below_minimum_observations": {name: int((inside_counts[position] < minimum).sum())
                                               for position, name in enumerate(count_names)},
         "minimum_valid_observations": minimum,
-        "outputs": ["work/composite/index_medians.tif", "work/composite/observation_counts.tif",
-                    "work/composite/boundary_mask.tif"],
+        "outputs": [f"work/{config['year']}/composite/index_medians.tif",
+                    f"work/{config['year']}/composite/observation_counts.tif",
+                    f"work/{config['year']}/composite/boundary_mask.tif"],
         "seconds": round(time.time() - started, 1),
     }
     update_manifest("composite", details)
